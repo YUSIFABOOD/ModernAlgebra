@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\geometry{a4paper, margin=1in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 1\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{September 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{0}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section{Dihedral Groups}
+\subsection*{Problem 2}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    &$e$&$R_{60^\circ}$&$R_{120^\circ}$&$s_1$&$s_2$&$s_3$\\ \hline
+    $e$&$e$&$R_{60^\circ}$&$R_{120^\circ}$&$s_1$&$s_2$&$s_3$\\ \hline
+    $R_{60^\circ}$&$R_{60^\circ}$&$R_{120^\circ}$&$e$&$s_3$&$s_1$&$s_2$\\ \hline
+    $R_{120^\circ}$&$R_{120^\circ}$&$e$&$R_{60^\circ}$&$s_2$&$s_3$&$s_1$\\ \hline
+    $s_1$&$s_1$&$s_2$&$s_3$&$e$&$R_{60^\circ}$&$R_{120^\circ}$\\ \hline
+    $s_2$&$s_2$&$s_3$&$s_1$&$R_{120^\circ}$&$e$&$R_{60^\circ}$\\ \hline
+    $s_3$&$s_3$&$s_1$&$s_2$&$R_{60^\circ}$&$R_{120^\circ}$&$e$ \\ \hline
+\end{tabular}\\ \\
+$D_3$ is not Abelien, a counter example for commutativity is $R_{120^\circ} \cdot s_1=s_3$ but $ s_1\cdot R_{120^\circ}=s_2$
+\subsection*{Problem 3}
+\begin{itemize}
+    \item [a)] $\{V\}$
+    \item [b)] $\{R_{270^\circ}\}$
+    \item [c)] $\{R_{0^\circ}\}$
+    \item [d)] $\{R_{0^\circ},R_{180^\circ}, H,V,D,L\}$
+    \item [e)] $\emptyset$
+\end{itemize}
+\subsection*{Problem 5}
+For an n-gon, we have $2n$ of operations that preserve symmetry, these operations are rotations and reflections.\\
+\textbf{For rotations}, there are $n$ possible rotations for every n-gon including the identity element. The rotations other than the identity are the multiples of $\frac{360}{n}$ degrees. We can represent the rotations by $r^c$, where $1\le c\le n-1$ is the number we can multiply $\frac{360}{n}$ with. Thus, the available rotations for an n-gon are: $e,r^1, r^2, r^3,...,r^{n-1}$.\\
+\textbf{For reflections}, the available reflections differ whether $n$ is even or odd.
+\begin{itemize}
+    \item []\textbf{\textit{n} is odd:}
+    The available reflections are the reflections about the axes of symmetry, which are axes from one vertix to the midpoint of the opposite side. Then, there are $n$ reflections as there are $n$ verticies.
+    \item []\textbf{\textit{n} is even:}
+    The available reflections are the reflections about the axes of symmetry, $\frac{n}{2}$ of them are axes from one vertix to the opposite vertix,and the other $\frac{n}{2}$ are those from one midpoint of one side to the midpoint of the opposite side. Then there are $n$ reflections.
+\end{itemize}
+\subsection*{Problem 11}
+When we do a reflection twice, we get the original orientation, so it is just like if we rotate by zero degree. Hence, any even number of similar reflections leads to a rotation. And if we rotate the shape any number of rotations we get a resultant rotation with the sum of angles of the rotations. If we applied a reflection followed by a rotation or vice versa, we get a reflection.
+We represent rotations in this problem by $r$ and reflections by $s$.\\ Thus, for the given formula $a^2b^4ac^5a^3c$, we can expan it to $a^2b^4ac^4ca^2ac=rrarcrac=(rr)arcrac=rarcrac.$ If both $a,c$ are rotations \textbf{then the previous expression is rotation}.\\ However, let both $a,c$ be reflections. Then, $rarcrac=rsrsrss=(rs)rsrss=srsrss=(sr)srss=ssrss=(ss)rss=rrss=(rr)ss=rss=(rs)s=ss=r.$ \textbf{The result is rotation}.\\ Now, we let $a=r$ and $c=s$, we observe that $rarcrac=(rr)rsrrs=(rr)srrs=(rs)rrs=(sr)rs=(sr)s=ss=r.$ \textbf{The result is reflection}.\\ Finally, let $c=r,a=s$, then $rarcrac=(rs)rrrsr=(sr)rrsr=(sr)rsr=(sr)sr=(ss)r=rr=r.$ \textbf{The result is also a rotation}.\\ Therefore, we showed that the expression $a^2b^4ac^5a^3c$ is a rotation for every $a,b,c$ in a dihedral group.
+\subsection*{Problem 13}
+We observe the cayley table of $D_4$ in Modern Algebra Lecture Notes by Dr. Daoud Siniora. We find that $VR_{90^\circ} = R_{90^\circ}H$, but $V \ne H.$
+\subsection*{Problem 21}
+If we applied any reflection twice, we get the identity element, so $X$ cannot be a reflection. Since $Y \ne R_{90}$, then it can be $e,R_{180}, R_{270}$.It cannot be reflection as reflection after rotation leads to a reflection. By observing the same table in the Lecture Notes that we mentioned in Problem 13, we see that $R_{270}R_{180}=R_{180}R_{270}=R_{90}e=R_{90}$. But $R_{270},R_{90}$ cannot be represented in $X^2$ as $R_{270}=R_{90}R_{90}R_{90}.$ and $R_{90}$ is the smallest rotation we can do. Thus, $X=R_{90}$ and $X^2Y=R_{180}R_{270}=R_{90}R_{90}R_{270}=R_{90}$,and $Y=R_{270} \ne R_{90}.$
+\end{document}
