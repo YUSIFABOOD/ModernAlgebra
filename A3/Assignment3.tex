@@ -60,7 +60,14 @@ $\{R_{0},R_{90},R_{180},R_{270}\}, \{R_{180},R_{0},H,V\}, \{R_{180},R_{0},D,L\}$
     We see that we found an integer $m-n$ such that $g^{m-n}=e.$ But we know that if an element $g$ has infinite order then there is no integer $s$ such that $g^s=e.$ So we see that we clearly reached a contradiction. So, $a^m \ne a^n$ must be true. Therefore, we proved that $a^m \ne a^n$ when $m \ne n$ for every group element with infinite order.
 \end{proof}
 \subsection*{Problem 30}
-$H$ is clearly the group of even integers.
+$H$ must be the group of even integers.
+\begin{proof}
+We see that the group is proper, so it cannot be the group of integers. We know that the group has the elements $18, 30, 40$, and so it must has their multiples. Since these elements are in the group, we can get any linear combination of them using addition. That is \begin{center}
+    $(18x+30y+40z)$, where $x,y,z \in \mathbb{Z}.$
+\end{center}
+By \textit{Bezout's identity}, any linear combination of numbers is a multiple of their \textit{gcd.} Thus, the group these elements create is the group that contains multiples of their gcd, which is \[\langle gcd(18,30,40)\rangle=\langle 2 \rangle.\]
+Therefore, we can see $H$ is clearly the group of all even integers.
+\end{proof}
 \subsection*{Problem 34}
 \begin{proof}
     Since $H,K$ are subgroups of $G$, then every element in both $H,K$ is an element in $G.$ By definition, we know that the intersection between two sets is the shared elements among these sets. We pick $s,t \in K \cap H.$ We know that $s,t \in H$, then $st \in H$. We also know that $s,t \in K$, then $st \in K$. Thus $st \in H \cap K$ and the operation is closed. Since $H,K$ are groups, they both have the identity element. So, it is clear that $e \in H \cap K.$ Since, $a \in H$ and $a \in K$ then $a^{-1}\in H, a^{-1}\in K.$ Therefore, we showed that $H \cap K$ is a subgroup of $G.$
