@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\geometry{a4paper, margin=0.9in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 3\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{September 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{2}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section{Subgroups}
+\subsection*{Problem 2}
+$\langle \frac{1}{2} \rangle$ in $\textbf{Q}=\{\cdot\cdot\cdot, \frac{-3}{2}, -1, \frac{-1}{2}, 0, \frac{1}{2},1,\frac{3}{2}, \cdot\cdot\cdot\}$\\
+$\langle \frac{1}{2} \rangle$ in $\textbf{Q}^*=\{\cdot\cdot\cdot, \frac{1}{8},\frac{1}{4},\frac{1}{2},1,2,4,8, \cdot\cdot\cdot\}$
+\subsection*{Problem 4}
+\begin{proof}
+    Suppose we have a group $G$. We pick $g \in G$ and suppose its order is $n\in \mathbb{Z}.$ To prove that an element $t$ has order $n$ we need to prove that $t^n=e$ and there is no integer $s<n$ which satisfies $t^s=e.$ We know that $g^n=e.$ Observe that $(g^{-1})^n=(g^n)^{-1}=e^{-1}.$But the inverse of the identity element is the identity element. Thus, $(g^{-1})^n=e.$ For the second part, assume that we have $s \in \mathbb{Z}$, and $(g^{-1})^s=e.$ We know that $(g^{-1})^s=(g^s)^{-1}=e.$ Now, multiply both sides by $g^s$ to get \begin{align*}(g^s)^{-1} g^s&=eg^s\\ e&=g^s. \end{align*} 
+    We know that $n$ is the least integer that satisfies $g^n=e.$ So, $s>=n,$ which contradicts our assumption that $s<n.$ So, $s$ Therefore, we proved that for any group, any element and its inverse have the same order.
+\end{proof}
+\subsection*{Problem 6}
+\begin{itemize}
+    \item [b)] $|a|=4, |b|=3, |a+b|=12.$
+\end{itemize}
+\subsection*{Problem 7}
+\begin{align*}
+    (a^4c^{-2}b^4)^{-1}=(a^{6-2}c^{-2}b^{7-3})^{-1}&=((a^6a^{-2})c^{-2}(b^7b^{-3}))^{-1}\\
+    &=((ea^{-2})c^{-2}(eb^{-3}))^{-1}\\
+    &=(a^{-2}c^{-2}b^{-3})^{-1}\\
+    &=(a^{-2}(c^{-2}b^{-3}))^{-1}\\
+    &=((c^{-2}b^{-3})^{-1}(a^{-2})^{-1}) \text{     Using \textit{Socks-Shoes Property}}\\
+    &=(b^{3}c^{2}a^2) \text{     Using \textit{Socks-Shoes Property}}
+\end{align*}
+\subsection*{Problem 10}
+We observe the cayley table of $D_4$ and get that:\\
+$\{R_{0},R_{90},R_{180},R_{270}\}, \{R_{180},R_{0},H,V\}, \{R_{180},R_{0},D,L\}$ are the possible subgroups from $D_4.$
+\subsection*{Problem 19}
+\begin{proof}
+    Let $a$ is a group element which has an infinite order. That implies that there is no $s \in \mathbb{Z^+}$ that satisfies $a^n=e.$ We pick $n,m \in \mathbb{Z}.$ We want to proof that if $m \ne n$ then $a^m \ne a^n.$ Assume, $m \ne n,$ we need to show $a^m \ne a^n.$ For the sake of contradiction, assume that $a^m=a^n.$ Without loss of generality, assume $m>n.$ Then, we multiply both sides by $(a^n)^{-1}:$ 
+    \begin{align*}
+        a^m(a^n)^{-1}=a^n (a^n)^{-1}\\
+        a^m a^{-n}=e\\
+        a^{m-n}=e.
+    \end{align*}
+    We see that we found an integer $m-n$ such that $g^{m-n}=e.$ But we know that if an element $g$ has infinite order then there is no integer $s$ such that $g^s=e.$ So we see that we clearly reached a contradiction. So, $a^m \ne a^n$ must be true. Therefore, we proved that $a^m \ne a^n$ when $m \ne n$ for every group element with infinite order.
+\end{proof}
+\subsection*{Problem 30}
+$H$ is clearly the group of even integers.
+\subsection*{Problem 34}
+\begin{proof}
+    Since $H,K$ are subgroups of $G$, then every element in both $H,K$ is an element in $G.$ By definition, we know that the intersection between two sets is the shared elements among these sets. We pick $s,t \in K \cap H.$ We know that $s,t \in H$, then $st \in H$. We also know that $s,t \in K$, then $st \in K$. Thus $st \in H \cap K$ and the operation is closed. Since $H,K$ are groups, they both have the identity element. So, it is clear that $e \in H \cap K.$ Since, $a \in H$ and $a \in K$ then $a^{-1}\in H, a^{-1}\in K.$ Therefore, we showed that $H \cap K$ is a subgroup of $G.$
+\end{proof}
+\textbf{For the second part,} the same proof extend to any number of subgroups.
+\end{document}
