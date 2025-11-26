@@ -1,0 +1,146 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\geometry{a4paper, margin=1in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 8\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{November 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{8}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section{Normal Subgroups}
+\subsection*{Problem 1}
+Observe that $(1 \, 2 \, 3)H =\{(1 \, 2 \, 3), (1 \, 3)\}$ and $H(1 \, 2 \, 3)= \{(1 \, 2 \, 3), (2 \, 3)\}$. Clearly, $(1 \, 2 \, 3)H \ne H(1 \, 2\, 3)$ and $H$ is not normal subgroup of $S_3$. 
+\subsection*{Problem 2}
+\begin{proof}
+    We know that $A_n$ is the group of even permutations. We pick an element $g \in S_n, a \in A_n$ and conjugate $a$ by $g$. We know that if $g$ is an odd permutation, then its inverse is also an odd permutation, so $gag^{-1}$ is an even permutation. If $g$ is an even permutation, then $g$ is in the group $A_n$ and the conjugation is trivially is an even permutation. 
+as $A_n$ is a group, it is closed under multiplication. Therefore, we proved that $A_n \unlhd S_n$
+\end{proof}
+\subsection*{Problem 6}
+We pick an element $h \in H$ such that $h=\begin{bmatrix}
+  a & b \\
+  0 & d
+\end{bmatrix}$. We observe that $g=\begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+\end{bmatrix}$ is clearly an element of $GL(2,\mathbb{R})$ as its determinant is $-1.$
+See that \[gh=\begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+\end{bmatrix} \begin{bmatrix}
+  a & b \\
+  0 & d
+\end{bmatrix}=\begin{bmatrix}
+  0 & d \\
+  a & b
+\end{bmatrix}.\]
+Since $g$ is the matrix that swaps the rows then $g^{-1}=g.$ Now, we see 
+\[ghg^{-1}=\begin{bmatrix}
+  0 & d \\
+  a & b
+\end{bmatrix} \begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+\end{bmatrix}=\begin{bmatrix}
+  d &0  \\
+  b & a
+\end{bmatrix}.\]
+In case if $b \ne 0$, it is clear that $ghg^{-1} \notin H.$ The group $H \ntrianglelefteq GL(2, \mathbb{R}).$
+\subsection*{Problem 8}
+    We know that
+    \begin{align*} \langle 12 \rangle = \{ \cdot \cdot \cdot, -36, -24, -12, 0, 12 ,24, 36, \cdot \cdot \cdot\}\\
+                    \langle 3 \rangle = \{ \cdot \cdot \cdot, -12,-9, -6, -3, 0, 3 , 6, 9,12, \cdot \cdot \cdot\}\end{align*}
+
+    We compute the cosets of $\langle 12 \rangle:$
+    \begin{align*}
+        &0+\langle 12 \rangle=\langle 12 \rangle.\\
+        &3+\langle 12 \rangle.\\
+        &6+\langle 12 \rangle.\\
+        &9+\langle 12 \rangle.\\
+        &12+\langle 12 \rangle=0+\langle 12 \rangle+\langle 12 \rangle.\\
+    \end{align*}
+So the quotient group $\langle 3 \rangle / \langle 12 \rangle$ has $4$ elements, similar to $Z_4.$
+similarly, we see that $\langle 8 \rangle/\langle 48 \rangle$ has $6$ elements, similar to $Z_6.$
+In the following proof, we will find an isomorphism from $\langle n \rangle/ \langle kn \rangle$ to $Z_k.$
+\begin{proof}
+    To find such an isomorphism, we observe the function:
+    $$\gamma(x+\langle kn\rangle)=(\frac{x}{n}) \mod k$$
+    We clain that the function is well defined. To prove this, suppose $h+\langle kn \rangle=x+\langle kn \rangle,$ so $x=h+m, m \in \langle kn \rangle.$ We observe that
+    \begin{align*}
+      \gamma(h+m+\langle kn \rangle) = \frac{h+m}{n} \mod k= \frac{h}{n} \mod k+ \frac{m}{n} \mod k.
+    \end{align*}
+    Since $m$ is a multiple of $kn$, then it is clear that $\frac{m}{n} \mod k=0.$
+    Hence,
+    \[\gamma(x+\langle kn \rangle)=  \gamma((h+m)+\langle kn \rangle)=(\frac{h}{n}) \mod k = (\frac{x}{n}) \mod k.\]
+    Now, we need to show that this function is a homomorphism, injective, surjective. We begin by showing that it is a homomorphism.
+    First, we know that $$\langle n \rangle/ \langle kn \rangle =\{0+\langle kn \rangle, n+\langle kn \rangle,2n+ \langle kn \rangle, \cdot \cdot \cdot , (k-1)n+ \langle kn \rangle \}.$$
+    Observe that:
+    \begin{align*}
+      \gamma(y+\langle kn \rangle)+\gamma(x+\langle kn \rangle)&=(\frac{y}{n}) \mod k + (\frac{x}{n}) \mod k\\
+      &=((\frac{y}{n})+(\frac{x}{n})) \mod k\\
+      &=(\frac{y+x}{n}) \mod k\\
+      &=\gamma((x+y)+\langle kn \rangle).
+    \end{align*}
+    We proved the homomorphism.\\
+    Next, we will show the function is injective. Pick two elements $a,b \in \langle n \rangle$ and assume that $\gamma(a+\langle kn \rangle) =\gamma(b+\langle kn \rangle)$:
+    \begin{align*}
+      (\frac{a}{n})\mod k = (\frac{b}{n})\mod k &\implies (\frac{a-b}{n}) = sk, s \in \mathbb{Z}\\
+                                                &\implies a-b=skn.
+    \end{align*}
+    Thus, $a-b \in \langle kn \rangle$, so $a,b$ are in the same coset and the function is injective.
+    Finally, we show the function is surjective. Pick an element $t \in Z_k,$ and observe the integer $nt$:
+    \[\gamma(nt+\langle kn \rangle)=\frac{nt}{n} \mod k= t \mod k =t.\]
+    Therefore, we find an isomorphism from $\langle n \rangle / \langle kn \rangle$ to $Z_k.$
+\end{proof}
+
+
+\subsection*{Problem 9}
+\begin{proof}
+  Suppose we have a group $G$ and a group $H$ of index 2, that is, $H$ partitions the group $G$ into two distinct cosets. Pick an element $g \in G$ and observe that if $g \in H$ then $gH=H=Hg$. If $g \notin H$, then $gH$ is the coset of elements that are in $(G \setminus H)$, and, clearly, so is $Hg$.
+  Hence, $gH=Hg$ and the subgroup $H$ is a normal subgroup in $G$.
+\end{proof}
+\subsection*{Problem 10}
+\begin{itemize}
+    \item [a)] We compare the left and the right cosets of the subgroup $H$ by $g =(1 \, 4 \, 2)$. We see $g$ is in $A_4$ as it can be written as two transpositions $(1 \, 2) (1 \, 4).$ See that:
+    \begin{align*}
+      gh= (1 \, 4 \, 2) (1 \, 2)(3 \, 4) = (2 \, 4 \, 3)\\
+      hg =(1 \, 2) (3 \, 4) (1 \, 4 \, 2)=(1 \, 3 \, 4)\\
+    \end{align*}
+    Clearly, $gH \ne Hg$. Thus, the group $H=\{(1), (1 \, 2)(3 \, 4)\}$ is not normal subgroup in $A_4.$
+\end{itemize}
+\subsection*{Problem 12}
+\begin{proof}
+  Suppose we have an abelian group $G.$ Suppose we have a normal subgroup of $G$, call it $N$, we know that $N$ is abelian and so its cosets. Pick two elements $a,b \in G$, we know $aN * bN=(ab)N.$ since $a,b\in G$, then they commute with any element in the group. Observe that $(ab)N=(ba)N=bN * aN$ for every choice of $a, b.$ Hence, the quotient group of $G$ by $N$ is abelian.
+\end{proof}
+\subsection*{Problem 14}
+We see that $lcm(8, 14)=56$ and $56 = 4 \times 14=7 \times 8.$ So, the first time we reach the identity of the quotient group, which is $\langle 8 \rangle$ is after adding $14+\langle 8 \rangle$ with itself $4$ times.
+\subsection*{Problem 22}
+\begin{proof}
+  We claim the order of the group $(\mathbb{Z} \oplus \mathbb{Z})/\langle (2,2) \rangle$ is infinite, then there may exist an element in the group of an infinite order. Observe:
+  \[(1,0)+\langle (2,2) \rangle.\]
+  We check if there exists an element $n \in \mathbb{Z}$ such that $n(1,0)+\langle (2,2) \rangle$ is the identity.
+  We know that the identity is the subgroup $\langle (2,2) \rangle,$ so any element in this subgroup is written as $(2k,2k), k \in \mathbb{Z}.$
+  Observe that if $n(1,0)+\langle (2,2)\rangle=(n,0)+\langle (2,2) \rangle$ is the identity, then $(n,0)$ must be in the form $(2k,2k).$ Clearly $0=2 * 0,$ and if $k=0$ then $n=0$, so the only integer $n$ such that $n(1,0)+\langle (2,2) \rangle$ is the identity is zero. Therefore, the order of the group $(\mathbb{Z} \oplus \mathbb{Z})/\langle (2,2) \rangle$ is infinite.
+ \\ For the second part, we claim that the group is not cyclic. For the sake of contradiction, assume the group is cyclic. Since we know that any infinite cyclic group is isomorphic to the group of integers, that is, the only element of a finite order within the group is the idenity element. We observe if we multiply $(1,1) +\langle (2,2) \rangle$ by $2$ we get $(2,2)+\langle (2,2) \rangle=\langle (2,2) \rangle$ which is the identity, a counter example. Thus, the group is not cyclic.
+\end{proof}
+\subsection*{Problme 37}
+\begin{proof}
+  Suppose we have a finite group $G$ and let $H$ be a normal subgroup of $G.$ Pick an element $g \in G$ and suppose it has an order $n.$ Observe that $(gH)^n=g^nH=eH=H$ which is the identity element of the group $G/H.$ Then, the order of $gH$ must devide $n.$
+\end{proof}
+\end{document}

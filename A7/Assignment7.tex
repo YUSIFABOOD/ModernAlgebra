@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\geometry{a4paper, margin=1in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 7\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{November 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{5}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section{Lagrange’s Theorem}
+\subsection*{Problem 1}
+We observe that:
+\begin{align*}
+    H=0+H=&3+H=\{-9, -6, -3,0,3,6,9\}\\
+    &1+H=\{-8, -5, -2,1,4,7,10\}\\
+    &2+H=\{-7, -4, -1,2,5,8,11\}\\
+\end{align*}
+Pick $t \in \mathbb{Z}$. Using the \textit{Division Algorithm}, $t$ can be wirtten as $t=3q+r$, where $(q \in \mathbb{Z}) \wedge (0\le r < 3)$. Clearly, when $(r=0) \implies (t+H=H)$ as $3q \in H$. Moreover, when $r=1,r=2$, we see that
+\begin{align*}
+    t+H=(3q+1)+H=1+(3q+H)=1+H\\
+    t+H=(3q+2)+H=2+(3q+H)=2+H\\.
+\end{align*}
+\subsection*{Problem 7}
+We know that $|\langle a \rangle|=|a|=30$ and $|\langle a^4 \rangle|=\frac{30}{gcd(30,4)}=15.$ Hence, $\frac{|\langle a \rangle|}{|\langle a^4 \rangle|}=\frac{30}{15}=2,$ so we have two cosets of $\langle a^4 \rangle$ in $\langle a \rangle.$
+Clearly, $a^0\langle a^4 \rangle=a^6\langle a^4 \rangle=\langle a^4 \rangle$ is a coset. The second coset is $a^5\langle a^4 \rangle.$
+\subsection*{Problem 9}
+Since the order of $A_4$ is $\frac{4!}{2}=12$ and the order of $H$ is $4$, then there are $\frac{12}{4}=3$ left cosets of $H.$ The first coset is $H$ itself, the other two are:
+\begin{align*}
+    \alpha_5 H=\{\alpha_5, \alpha_6, \alpha_7, \alpha_8 \}\\
+    \alpha_9 H=\{\alpha_9, \alpha_{10}, \alpha_{11}, \alpha_{12} \}\\    
+\end{align*}
+For the other part, we know that $|S_4|=4!=24.$ Thus, we can get $\frac{24}{4}=6$ left cosets of $H$ in $S_4$
+\subsection*{Problem 10}
+\begin{proof}
+    Suppose $H,K$ are subgroups from the group $G$, $a,b \in G$ and $aH=bK.$ First, we pick an element $h \in H.$
+    Since $aH=bK,$ then there exist an element $k\in K$ such that $ah=bk$. We know that $H$ is a subgroup, so it includes the identity element.
+    So, $a \in aH$ and $a=bk'$ where $k' \in K.$ We observe now that $ah=(bk')h=bk$. Multiplying by $b^{-1}$ both sides and using the associative property, we get $(k')h=k \implies (k')^{-1}(k')h=(k')^{-1}k=h=(k')^{-1}k$ and $h \in K$ and $H \subset K$.
+    \\Next,  we pick an element $k \in K.$ 
+    Since $aH=bK,$ then there exist an element $h\in H$ such that $ah=bk$. We know that $K$ is a subgroup, so it includes the identity element.
+    So, $b \in bK$ and $b=ah'$ where $h' \in H.$ We observe now that $bk=(ah')k=ah$. Multiplying by $a^{-1}$ both sides and using the associative property, we get $(h')k=h \implies (h')^{-1}(h')k=(h')^{-1}h=k=(h')^{-1}h$ and $k \in H$ and $K \subset H.$
+    Therefore, since $H \subset K$ and $K \subset H$, then $H=K$, which satisfies the proof.
+\end{proof}
+\subsection*{Problem 17}
+\begin{proof}
+    Suppose we have two primes $p, q$ such that the order of group $G=pq.$ Let $H$ a proper subgroup of $G$, so the order of $H\ne pq.$ By Lagrange's Theorem, $|H| \mid |G|,$ so $H$ is $p,q$ or $1$. Clearly, any group of order $1$ is cyclic. Moreover, using \textit{Corollary 7.2.6.} in Lecture Notes, since $p,q$ are prime numbers, then any group of order equal to $p$ or $q$ is cyclic. Therefore, we proved that any subgroup of the group $G$ of order $pq$, where $p,q$ are prime numbers, is a cyclic group. 
+\end{proof}
+\subsection*{Problem 19}
+We use \textit{Fermat's Little Theorem}, for $7^{13} \mod 11$ we can see that $11$ is a prime number. So, $7^{13} \mod 11=((7^{11} \mod 11) \times (7^2 \mod 11))\mod 11 = (7 \times 5) \mod 11=2.$
+For $5^{15} \mod 7,$ we can see that $7$ is a prime number. So, $5^{15} \mod 7=((5^{7} \mod 7) \times (5^7 \mod 7) \times (5 \mod 7))\mod 7=(5 \times 5 \times 5) \mod 7=6.$
+\subsection*{Problem 22}
+Suppose $H,K$ are subgroups of group G. We proved before in Assignemnt 3 that $H \cap K$ is a subgroup of both $H,K$. By \textit{Lagrange's Theorem}, then $(|H \cap K| \mid |H|) \wedge (|H \cap K| \mid |K|)$. So, $|H \cap K| \mid \gcd(|K|, |H|).$ Thus, $|H \cap K|$ is a common divisor of both $|H|, |K|$.
+For the specific case we are given, we see that $\gcd(12,35)=1$ and $|H \cap K|=1.$
+\subsection*{Problem 38}
+    \begin{proof}
+        Suppose $G$ is a finite group. For the sake of contradiction, assume the index of $Z(G)$ is a prime. That is, there is a prime number of consets of $Z(G)$ in $G$, call it $p$. So, $Z(G)$ is a proper subgroup and the group $G$ is not abelien. The order of the quotient group $G/Z(G)$ is prime and the quotient group is cyclic. So, it can be generated using an element, call it $aZ(G).$ Now, every element in the quotient group can be written as a power of $aZ(G)$, let $k\in \mathbb{Z}$ be the power. So, $(aZ(G))^k=a^kZ(G).$
+        That shows that any $g \in G$ can be written as $g=a^kz$, where $z\in Z(G).$ Pick two elements $x,y \in G$ such that $x=a^iz_1, y=a^jz_2,$ where $i,j\in \mathbb{Z} \wedge z_1,z_2\in Z(G)$, and observe:
+        \begin{align*}
+            xy=(a^iz_1)(a^jz_2)=(a^i(z_1a^j)z_2)=(a^ia^j)(z_1z_2)=a^{i+j}(z_1z_2)\\
+            yx=(a^jz_2)(a^iz_1)=(a^j(z_2a^i)z_1)=(a^ja^i)(z_2z_1)=a^{j+i}(z_2z_1)=a^{i+j}(z_1z_2).
+        \end{align*}
+        Thus, the group is abelien, which is a contradiction. Therefore, the index of $Z(G)$ is not prime.
+    \end{proof}
+\subsection*{Problem 39}
+\begin{proof}
+    
+The possible orders of $|H \cap K|$ are $1,2,4$. If the order is $1$, so it is the trivial group, which is abelien by definition. If the order is $2$, $2$ is prime, then the subgroup is cyclic and so it is abelien. Moreover, if the order is $4$ we have two cases. First, if $|H \cap K|$ has an element of order $4$, call it $a.$ We observe that $\langle a^0, a^1, a^2,a^3 \rangle$ is the whole group $H \cap K$ and since it is cyclic, it is abelien. Second case when the group has no element of order $4$, then all elements must be of order $2$ except the identity. Observe that:
+\begin{align*}
+    (ab)^2&=e\\
+    (ab)(ab)&=e\\
+    a(ab)(ab)&=a\\
+    (aa)b(ab)&=a\\
+    b(ab)&=a\\
+    b(ab)b&=ab\\
+    ba(bb)&=ab\\
+    ba&=ab.
+\end{align*}
+So, the group is abelien. Therefore, we proved that $H \cap K$ is an abelien group if $|H|=24$ and $|K|20.$
+\end{proof}
+\end{document}
