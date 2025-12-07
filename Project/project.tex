@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
-\usepackage{colortbl}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage[most]{tcolorbox}
 \geometry{a4paper, margin=0.75in}
 \contourlength{0.5pt}
 \usetikzlibrary{patterns}
@@ -12,8 +12,152 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyhead[L]{\rightmark}
 \fancyhead[R]{\thepage}
-\title{Modern Algebra}
-\author{Project\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+% --- Corollary Proof Environment (Dark Green accents) ---
+\newenvironment{corpf}{
+    {\noindent\textbf{Proof.}}
+    \tcolorbox[blanker, breakable, left=5mm, parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+    % Use darkgreen for the side line
+    borderline west={1mm}{0pt}{darkgreen!20!white}]
+}{
+    % Use darkgreen for the QED square
+    \unskip\nobreak\hfill\textcolor{darkgreen!90!white}{\hbox{}\nobreak\hfill$\blacksquare$}
+    \endtcolorbox
+}
+
+% --- Command: Corollary with Proof ---
+% Usage: \corp{Title}{Label}{Corollary Content}{Proof Content}
+\NewDocumentCommand{\corp}{m m +m +m}{
+    \begin{mycorollary}{#1}{#2}
+        #3
+    \end{mycorollary}
+    \begin{corpf}
+        #4
+    \end{corpf}
+}
+% --- Corollary Environment (Dark Green) ---
+\newtcbtheorem[number within=section]{mycorollary}{Corollary}
+{
+    enhanced,
+    frame hidden,
+    titlerule=0mm,
+    toptitle=1mm,
+    bottomtitle=1mm,
+    fonttitle=\bfseries\large,
+    coltitle=black,
+    % Mixing 40% darkgreen with white for the header
+    colbacktitle=darkgreen!25!white, 
+    % Mixing 20% darkgreen with white for the body
+    colback=darkgreen!15!white,      
+}{cor}
+
+% Command shortcut: \cor{Title}{Label}{Content}
+\NewDocumentCommand{\cor}{m m +m}{
+    \begin{mycorollary}{#1}{#2}
+        #3
+    \end{mycorollary}
+}
+% ===== Define custom colors =====
+\definecolor{defscol}{HTML}{F8C4A3}
+
+% ===== Define theorem-like environment for definitions =====
+\newtcbtheorem[number within=section]{mydefinition}{Definition}
+{
+    enhanced,
+    frame hidden,
+    titlerule=0mm,
+    toptitle=1mm,
+    bottomtitle=1mm,
+    fonttitle=\bfseries\large,
+    coltitle=black,
+    colbacktitle=defscol!40!white,
+    colback=defscol!20!white,
+}{defn}
+
+% ===== Corrected Shortcut Commands =====
+
+% A command for a standard definition.
+% Usage: \defn{Title}{label-key}{Content...}
+\NewDocumentCommand{\defn}{m m +m}{
+    \begin{mydefinition}{#1}{#2}
+        #3
+    \end{mydefinition}
+}
+
+% A command for a definition with an extra note in the title.
+% The note is placed in parentheses after the title.
+% Usage: \defnr{Title}{Note}{label-key}{Content...}
+\NewDocumentCommand{\defnr}{m m m +m}{
+    \begin{mydefinition}{#1 (#2)}{#3}
+        #4
+    \end{mydefinition}
+}
+% =======================================================
+% Code for Theorems with Proofs
+% =======================================================
+
+% Required Packages (make sure these are in your preamble)
+\usepackage{xparse}
+
+% --- 1. Define a color for theorems ---
+\definecolor{thmscol}{HTML}{BEA9DB} % A light violet color
+
+% --- 2. Define the theorem environment style ---
+\newtcbtheorem[number within=section]{mytheorem}{Theorem}
+{
+    enhanced,
+    frame hidden,
+    titlerule=0mm,
+    toptitle=1mm,
+    bottomtitle=1mm,
+    fonttitle=\bfseries\large,
+    coltitle=black,
+    colbacktitle=thmscol!40!white,
+    colback=thmscol!20!white,
+}{thm}
+% Command for a simple theorem
+\NewDocumentCommand{\thm}{m m +m}{
+    \begin{mytheorem}{#1}{#2}
+        #3
+    \end{mytheorem}
+}
+% --- 3. Define the proof environment style ---
+\newenvironment{thmpf}{
+    {\noindent\textbf{Proof.}}
+    \tcolorbox[blanker, breakable, left=5mm, parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+    borderline west={1mm}{0pt}{thmscol!60!white}]
+}{
+    % This adds the black square at the end of the proof
+    \textcolor{thmscol!60!black}{\hbox{}\nobreak\hfill$\blacksquare$}
+    \endtcolorbox
+}
+
+% --- 4. Create the all-in-one command for a theorem with its proof ---
+% Usage: \thmp{Title}{label}{Theorem Content}{Proof Content}
+\NewDocumentCommand{\thmp}{m m +m +m}{
+    \begin{mytheorem}{#1}{#2}
+        #3
+    \end{mytheorem}
+    \begin{thmpf}
+        #4
+    \end{thmpf}
+}
+\usepackage{hyperref}
+
+% Optional: This makes the links look nice (blue text instead of red boxes)
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    pdftitle={Sylow Theorems},
+    pdfpagemode=FullScreen,
+}
+\title{\textbf{Sylow Theorems}}
+\author{Yousef A. Abood \\ ID: 900248250 \\[0.5cm]\\The American University in Cairo\\Modern Algebra}
 \date{December 2025}
 \setlength{\parindent}{0pt}
 \singlespacing
@@ -21,5 +165,92 @@
 \onehalfspacing
 \begin{document}
 \maketitle
-\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\newpage
+\section{Preliminaries}
+In this section, we provide all the theorems and the definitions that we have studied in Modern Algebra, discrete mathematics courses and we used in the following sections. For the sake of time, we omit the proofs.
+\defn{Equivalence relation}{equr}
+{
+    A relation $R$ on a set $A$ is called an \textit{equivalence relation} if it satisfies the following three properties:
+    \begin{itemize}
+        \item For any $a \in A$, we have that $aRa$ (Reflexivity)
+        \item For any $a,x \in A$, we have that if $aRx$, then $xRa$ (Symmetry)
+        \item For any $a,x,y \in A$, we have that if $aRx$ and $xRy$, then $aRy$ (Transitivity)
+    \end{itemize}
+}
+\defn{Equivalence class}{equc}
+{
+    Let $R$ be an equivalence relation on set $A$, and let $a \in A$. The equivalence class of $a$ is the set of all elements in $A$ that are equivalent to $a.$ That is, denoted by $[a]_R$ or $[a].$
+    \[[a]=\{b \in A \mid b \sim a\}\]
+}
+\thm{}{parts}
+{
+    Suppose $R$ is an equivalence relation on a set $A$. Then we can express $A$ as
+    \[A=[x_1]\cup [x_2]\cup [x_3] \cup \cdots \cup [x_n]\]
+    where $x_1,x_2,x_3,\cdots,x_n \in A$ and the equivalence classes $A=[x_1]\cup [x_2]\cup [x_3] \cup \cdots \cup [x_n]$ are pairwise disjoint. In other words, $A$ is the union of the distinct equivalence classes of $R$
+}
+\defn{Center of Group}{Z}{The center of a group $G$ is the set 
+\[Z(G)=\{g \in G \mid \forall h \in G, gh=hg\}.\]}
+\defn{Centralizer}{cen}
+{The Centralizer of an element $g \in G$ is the set $$C(g)=\{a \in G \mid ag=ga\}.$$}
+\thm{Lagrange's Theorem}{Lagrange}
+{
+    The order of a subgroup of a finite group divides the order of the group.
+}
+\defn{Normal Group}{}{}
+\section{Conjugacy Classes}
+We start by providing the definition of the Conjugacy class, then show that it is a way to partition groups.
+\defn{Conjugacy class}{conj}
+{
+    Let $a,b$ be elements of group $G$. We say that $a,b$ are \textit{conjugate} in $G$ and we say that $b$ is the \textit{conjugate} of $a$ if and only if $gag^{-1}=b$ for some $g \in G.$ The set of all conjugates of an element $a \in G$, denoted by $\operatorname{cl}(a)=\{gag^{-1} \mid g \in G\}$, is the \textbf{\textit{Conjugacy class of a}}.
+}
+\thmp{}{}{Conjugacy is an \textit{equivalence relation} on a group.}
+{
+    Let $R$ be the conjugacy relation and let $G$ be a group.  We show that it is:
+    \begin{itemize}
+        \item Reflexive: Let $a\in G$. See that $eae^{-1}=a$, so, every element is conjugate to itself and the relation is reflexive.
+        \item Symmetric: Let $a,b\in G$. Suppose that $b$ is conjugate of $a,$ that is, there exists $g\in G$ such that $gag^{-1}=b$. Conjugate $b$ by $g^{-1}$, $g^{-1}bg=g^{-1}gag^{-1}g=a.$ Thus, $a$ is conjugate to $b$ and $R$ is symmetric.
+        \item Transitive: Let $a,b,c\in G$. Suppose that $a$ is conjugate to $b$, then there exists a $g \in G$ such that $a=gbg^{-1}$, $b$ is conjugate to $c$, then there exists an $h \in G$ such that $b=hch^{-1}.$ Observe that, $a=gbg^{-1}=ghch^{-1}g^{-1}=(gh)c(gh)^{-1},$ and $a$ is conjugate to $c$. Thus, $R$ is transitive.
+    \end{itemize}
+}
+See that, by Theorem \ref{thm:parts}, we can partition groups into disjoint conjugacy classes.
+\begin{itemize}
+    \item \textbf{Example}\\
+In $D_4$, we have:\\
+$\operatorname{cl}(R_{90})=\{R_{90}R_{90}R_{90}^{-1},R_{180}R_{90}R_{180}^{-1},R_{270}R_{90}R_{270}^{-1},R_{0}R_{90}R_{0}^{-1},\\ HR_{90}H^{-1},VR_{90}V^{-1},DR_{90}D^{-1},LR_{90}L^{-1}\}=\{R_{90},R_{270} \}$
+
+\end{itemize}
+\thmp{}{}{$\forall x \in Z(G)$ we have that $\operatorname{cl}(x)=\{x\}.$}
+{
+    Suppose we have a group $G$, pick an element $a \in Z(G).$ By definition of the center of the group, $a$ commutes with any element in $G.$ Conjugate $a$ by $g\in G,$ that is, $gag^{-1}$. Since $a$ commutes with any element in the group, observe
+    \[gag^{-1}=agg^{-1}=ae=a.\]
+    Thus, the conjugacy class of an element in the center of the group is the singleton that contains this element.
+} 
+
+\mbox{ } \\
+The next theorem shows a relationship between the conjugacy class of an element $a$ and the index of the centralizer of $a.$
+\thmp{}{}
+{
+    Let $G$ be a finite group and let $a$ be an element of $G.$ Then, $|\operatorname{cl}(a)|=|G:C(a)|.$
+}
+{
+    Suppose we have a finite group $G$ and let $a$ be an element of $G$. To prove that the order of the set of conjugates of an element equals the index of that element centralizer in $G$ we need to find a bijection between the set of conjugates and the set of cosets of the centralizer, let $S$ be the set of left cosets of $C(a)$ in $G$.
+    Suppose we have the function $\phi: S\to \operatorname{cl}(a)$ such that $\phi(xC(a))=xax^{-1}, x \in G.$ \\ \\
+    First, we need to show that $\phi$ is well defined, that is, if $xC(a)=yC(a)$, then $\phi(xC(a))=\phi(yC(a)).$
+    Let $x,y$ be elements in the group $G$ and suppose that $xC(a)=yC(a).$ So, $y^{-1}x\in C(a)$ and $x=y(y^{-1}x).$ Hence, since $y^{-1}x$ commutes with $a$ we get that: $$\phi(xC(a))=\phi(y(y^{-1}x)C(a))=y(y^{-1}x)a(y^{-1}x)^{-1}y^{-1}=yay^{-1}.$$
+    Since we get that $\phi(xC(a))=\phi(yC(a))$, then the function is well defined.\\
+    Next, we show $\phi$ is injective. Suppose $\phi(xC(a))=\phi(yC(a))$, then, $xax^{-1}=yay^{-1}.$ Multiply both sides by $y^{-1}$ from the left and by $x$ from the right. Observe that $y^{-1}xa=ay^{-1}x$, so $y^{-1}x$ commutes with $a$ and $y^{-1}x \in C(a).$ Since $y^{-1}x \in C(a)$ then, $xC(a)=yC(a)$ as required. Thus, the function $\phi$ is injective.
+    \\ \\
+    Finally, we show that $\phi$ is surjective. Let $b$ be any element in the conjugacy class $\operatorname{cl}(a).$ By definition, $b=gag^{-1}, g \in G.$ We can see the coset $gC(a)$ maps to $b$. Clearly, the function is surjective.
+    \\ Therefore, we proved that the function $\phi: S \to \operatorname{cl}(a)$ such that $\phi(xC(a))=xax^{-1}$ is bijective and the order of the conjugacy class of an element $a$ is the index of the centralizer of that element.
+}
+\corp{}{}
+{
+    Let $G$ be a finite group and let $a$ be an element in $G$. $|\operatorname{cl}(a)| \text{ divides } |G|, a\in G.$ }
+{
+    By the previous theorem, we know that $|\operatorname{cl}(a)|=|G:C(a)|$ We know by \hyperref[thm:Lagrange]{Lagrange's Theorem} that the index of a subgroup divides the order of the group. Hence, the order of the conjugacy class of a $\operatorname{cl}(a)$ divides the order of the group $G.$
+}
+\section{The Class Equation}
+\defn{The Class Equation}{}{}
+\section{The Sylow Theorems}
+\section{Applications of Sylow Theorems}
 \end{document}
