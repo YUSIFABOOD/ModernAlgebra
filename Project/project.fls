@@ -374,6 +374,7 @@ INPUT /home/yusif/.miktex/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /home/yusif/.miktex/texmfs/install/fonts/tfm/public/cm/cmti12.tfm
 INPUT /home/yusif/.miktex/texmfs/install/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /home/yusif/.miktex/texmfs/install/fonts/tfm/public/cm/cmbxti10.tfm
+INPUT /home/yusif/.miktex/texmfs/install/fonts/tfm/public/cm/cmbxti10.tfm
 INPUT project.aux
 INPUT ./project.out
 INPUT ./project.out
@@ -383,6 +384,8 @@ INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.p
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
+INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb

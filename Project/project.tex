@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
 \usepackage[most]{tcolorbox}
-\geometry{a4paper, margin=0.75in}
+\geometry{a4paper, margin=1in}
 \contourlength{0.5pt}
 \usetikzlibrary{patterns}
 \usepackage[english]{babel}
@@ -196,14 +196,39 @@ In this section, we provide all the theorems and the definitions that we have st
 {
     The order of a subgroup of a finite group divides the order of the group.
 }
-\defn{Normal Group}{}{}
+\defn{Normal subgroup}{}
+{
+    A supgroup $N$ of a group $G$ is called \textit{\textbf{normal}} if for any $g \in G$ and any $n \in N$ we have that $gng^{-1}\in N.$ We denote this by $N \trianglelefteq G$ or $N \triangleleft G.$
+}
+\defn{Normalizer}{}
+{
+    Let $H$ be a subgroup of a group $G$. The normalizer of $H$, denoted by $N(H)$, is the set of all elements in $G$ that preserve the set $H$ under conjugation.
+    $$N(H)=\{g \in G \mid gHg^{-1}=H\}.$$
+}
+\thm{}{idklol}
+{
+    Let $Z(G)$ be the center of a group $G.$ if $G/Z(G)$ is cyclic, then $G$ is abelien.
+}
+\thm{Cauchy's Theorem}{cauchy}
+{
+    Let $G$ be a finite abelian group, and suppose that $p$ is a prime that divides $|G|$.
+Then $G$ has an element of order $p$.
+}
+\defn{p-Group}{}
+{
+    Let $p$ be a prime number and let $G$ be a finite group. We call $G$ a \textit{p-Group} if $|G|=p^n$, where $n \ge 1.$
+}
+\defn{Group Actions}{}
+{
+
+}
 \section{Conjugacy Classes}
 We start by providing the definition of the Conjugacy class, then show that it is a way to partition groups.
 \defn{Conjugacy class}{conj}
 {
     Let $a,b$ be elements of group $G$. We say that $a,b$ are \textit{conjugate} in $G$ and we say that $b$ is the \textit{conjugate} of $a$ if and only if $gag^{-1}=b$ for some $g \in G.$ The set of all conjugates of an element $a \in G$, denoted by $\operatorname{cl}(a)=\{gag^{-1} \mid g \in G\}$, is the \textbf{\textit{Conjugacy class of a}}.
 }
-\thmp{}{}{Conjugacy is an \textit{equivalence relation} on a group.}
+\thmp{}{conjug}{Conjugacy is an \textit{equivalence relation} on a group.}
 {
     Let $R$ be the conjugacy relation and let $G$ be a group.  We show that it is:
     \begin{itemize}
@@ -219,7 +244,7 @@ In $D_4$, we have:\\
 $\operatorname{cl}(R_{90})=\{R_{90}R_{90}R_{90}^{-1},R_{180}R_{90}R_{180}^{-1},R_{270}R_{90}R_{270}^{-1},R_{0}R_{90}R_{0}^{-1},\\ HR_{90}H^{-1},VR_{90}V^{-1},DR_{90}D^{-1},LR_{90}L^{-1}\}=\{R_{90},R_{270} \}$
 
 \end{itemize}
-\thmp{}{}{$\forall x \in Z(G)$ we have that $\operatorname{cl}(x)=\{x\}.$}
+\thmp{}{concen}{$\forall x \in Z(G)$ we have that $\operatorname{cl}(x)=\{x\}.$}
 {
     Suppose we have a group $G$, pick an element $a \in Z(G).$ By definition of the center of the group, $a$ commutes with any element in $G.$ Conjugate $a$ by $g\in G,$ that is, $gag^{-1}$. Since $a$ commutes with any element in the group, observe
     \[gag^{-1}=agg^{-1}=ae=a.\]
@@ -228,7 +253,7 @@ $\operatorname{cl}(R_{90})=\{R_{90}R_{90}R_{90}^{-1},R_{180}R_{90}R_{180}^{-1},R
 
 \mbox{ } \\
 The next theorem shows a relationship between the conjugacy class of an element $a$ and the index of the centralizer of $a.$
-\thmp{}{}
+\thmp{}{number}
 {
     Let $G$ be a finite group and let $a$ be an element of $G.$ Then, $|\operatorname{cl}(a)|=|G:C(a)|.$
 }
@@ -247,10 +272,58 @@ The next theorem shows a relationship between the conjugacy class of an element 
 {
     Let $G$ be a finite group and let $a$ be an element in $G$. $|\operatorname{cl}(a)| \text{ divides } |G|, a\in G.$ }
 {
-    By the previous theorem, we know that $|\operatorname{cl}(a)|=|G:C(a)|$ We know by \hyperref[thm:Lagrange]{Lagrange's Theorem} that the index of a subgroup divides the order of the group. Hence, the order of the conjugacy class of a $\operatorname{cl}(a)$ divides the order of the group $G.$
+    By the previous theorem, we know that $|\operatorname{cl}(a)|=|G:C(a)|$ We know by \hyperref[thm:Lagrange]{Lagrange's Theorem} that the index of a subgroup divides the order of the group and we know that the centralizer of an element in the group is a subgroup. Hence, the order of the conjugacy class of a $\operatorname{cl}(a)$ divides the order of the group $G.$
 }
-\section{The Class Equation}
-\defn{The Class Equation}{}{}
+\corp{The Class Equation}{classeq}
+{
+    Let $G$ be a finite group. $$|G|=\sum |G:C(a)|,$$ where the sum runs over one element $a$ from each conjugacy class of $G$.
+}
+{
+    We know by Theorem \ref{thm:conjug} that the conjugacy classes partition the group, that is, $$|G|=|\operatorname{cl}(x_1)|+ |\operatorname{cl}(x_2)|+\cdots+|\operatorname{cl}(x_n)|,$$ where $x_1,x_2,\cdots, x_n$ are the representatives of the distinct conjugacy classes.
+    By Theorem \ref{thm:number}, the index of the centralizer of an element is the order of the conjugacy class of the same element. Thus, we can rewrite the class equation as $|G|=\sum |\operatorname{cl}(a)|.$
+    Since the conjugacy class of an element in the center is the singleton that contains the same element, the order of this class is $1$ and the sum of the sizes of these specific classes is exactly the order of the center of the group. Now, we can write the equation
+    \[|G|=|Z(G)|+\sum_{a\notin Z(G)}|G:C(a)|.\] 
+
+}
+\thmp{}{ntriv}
+{
+    Let $G$ be a \textit{p-Group}, then $Z(G)$ has more than one element.
+}
+{
+    Suppose the order of a \textit{p-Group} G is $p^n$ for some $n\ge 1.$ We start by collecting the elements in the center, and write the class equation in the form
+    \[|G|=|Z(G)|+\sum_{a\notin Z(G)}|G:C(a)|\]
+    where the sum runs over all representatives of all conjugacy classes with more than one element.
+    We know that $|G:C(a)|=|G|/|C(a)|$, and $C(a)$ is a subgroup of $G$. So each term in $\sum|G:C(a)|$ is of the form $p^k, k\ge 1.$
+    Now, observe
+    \[|Z(G)|=|G|-\sum|G:C(a)|.\]
+    Since $|G|, \sum|G:C(a)|$ are divisible by $p$, then $|Z(G)|$ is divisible by $p$. Since $e \in Z(G)$, $Z(G)$ cannot be empty. Since $|Z(G)|$ is divisble by $p$ and is non-zero, it must be at least $p$. Thus, $Z(G)$ has more than one element.
+}
+\corp{}{}
+{
+    if $|G|=p^2$, where $p$ is a prime, then $G$ is \textit{\textbf{abelian}}. 
+}   
+{
+    By Theorem \ref{thm:ntriv} and \hyperref[thm:Lagrange]{Lagrange's Theorem}, $|Z(G)|$ is either $p$ or $p^2.$ If $|Z(G)|=p^2$, $G=Z(G)$ and we are done. Otherwise, suppose $|Z(G)|=p$. Then $|G/Z(G)|=p$ and $G/Z(G)$ is cyclic. By Theorem \ref{thm:idklol}, $G$ is abelian.
+}
 \section{The Sylow Theorems}
+Remember that the inverse of Lagrange's Theorem is not valid. Suppose we have a group $G$ of order $n$, if $m$ divides $n$, this does not necessarily imply that $G$ has a subgroup of order $m.$
+However, the Norwegian mathematician Ludwig Sylow (1832-1918) proved the next theorem, which is a partial inverse of Lagrange's Theorem.
+\thmp{Sylow's First Theorem}{sylwfT}
+{
+    Let $G$ be a finite group and let $p$ be a prime. If $p^k$ divides $|G|$, then $G$ at least one subgroup of order $p^k.$
+}
+{
+
+}
+\defn{Sylow \textit{p-Subgroup}}{}
+{
+    Let $G$ be a finite group and let $p$ be a prime. if $p^k$ divides $|G|$ and $p^{k+1}$ does not divide $|G|$, then any subgroup of $G$ of order $p^k$ is called a \textit{Sylow p-Subgroup} of $G.$
+}
+\thmp{Sylow's Second Theorem}{sylowsT}
+{
+    Let $G$ be a finite group and let $H$ be a subgroup of $G.$ If $|H|$ is a power of a prime $p,$ then $H$ is contained in some Sylow p-Subgroup of $G.$
+}
+{}
+\thmp{Sylow's Third Theorem}{}{}{}
 \section{Applications of Sylow Theorems}
 \end{document}
