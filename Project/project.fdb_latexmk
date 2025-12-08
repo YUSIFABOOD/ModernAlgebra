@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765224385.86576 "/home/yusif/Uni/Fall 2025/ModernAlgebra/Project/project.tex" "project.pdf" "project" 1765224388.81945 0
+["pdflatex"] 1765231791.18783 "/home/yusif/Uni/Fall 2025/ModernAlgebra/Project/project.tex" "project.pdf" "project" 1765231792.19668 0
   "/home/yusif/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1759671773.08374 220889 b633cf45c7eed4eadae3f50154bdaacb ""
   "/home/yusif/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1750595393.52507 14064 96f807bf4f6cac049e83a06ddbf0d5ae ""
   "/home/yusif/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1759671832.19204 13282062 3af3a523a84544475bbbd7151a7a228d ""
@@ -210,10 +210,10 @@
   "/home/yusif/.miktex/texmfs/install/tex/latex/trimspaces/trimspaces.sty" 1750439124.76957 1380 971a51b00a14503ddf754cab24c3f209 ""
   "/home/yusif/.miktex/texmfs/install/tex/latex/url/url.sty" 1750439125.32423 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/home/yusif/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1750439125.45563 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "/home/yusif/Uni/Fall 2025/ModernAlgebra/Project/project.tex" 1765224381.89081 31325 20f25e2ba4e448b288622b785473206a ""
-  "project.aux" 1765224388.6409 2698 b32026ca615f035c0f75515e290fd6dd "pdflatex"
-  "project.out" 1765224388.6419 691 7529548e5d1e0256cd88bd6b9852d011 "pdflatex"
-  "project.tex" 1765224381.89081 31325 20f25e2ba4e448b288622b785473206a ""
+  "/home/yusif/Uni/Fall 2025/ModernAlgebra/Project/project.tex" 1765231789.75602 36814 11889c914c6a20421b89d4732a0f0e9f ""
+  "project.aux" 1765231792.09202 2792 1df40d0799b7b3e0130016ec0bdb0a62 "pdflatex"
+  "project.out" 1765231792.09302 901 db36c7262d050b32f6a2d33f71a96cae "pdflatex"
+  "project.tex" 1765231789.75602 36814 11889c914c6a20421b89d4732a0f0e9f ""
   (generated)
   "project.aux"
   "project.log"
