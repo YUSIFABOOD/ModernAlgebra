@@ -12,6 +12,59 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyhead[L]{\rightmark}
 \fancyhead[R]{\thepage}
+% =======================================================
+% Code for Lemmas (Royal Blue)
+% =======================================================
+
+% 1. Define Royal Blue color
+\definecolor{lemscol}{HTML}{4169E1} 
+
+% 2. Define the Lemma environment style
+\newtcbtheorem[number within=section]{mylemma}{Lemma}
+{
+    enhanced,
+    frame hidden,
+    titlerule=0mm,
+    toptitle=1mm,
+    bottomtitle=1mm,
+    fonttitle=\bfseries\large,
+    coltitle=black,
+    colbacktitle=lemscol!25!white, % Header background
+    colback=lemscol!15!white,      % Body background
+}{lem}
+
+% 3. Define the Lemma Proof environment
+\newenvironment{lempf}{
+    {\noindent\textbf{Proof.}}
+    \tcolorbox[blanker, breakable, left=5mm, parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+    % Royal blue line on the left
+    borderline west={1mm}{0pt}{lemscol!50!white}] 
+}{
+    % Royal blue QED square
+    \unskip\nobreak\hfill\textcolor{lemscol!90!white}{\hbox{}\nobreak\hfill$\blacksquare$}
+    \endtcolorbox
+}
+
+% 4. Command: Lemma WITHOUT Proof
+% Usage: \lem{Title}{Label}{Content}
+\NewDocumentCommand{\lem}{m m +m}{
+    \begin{mylemma}{#1}{#2}
+        #3
+    \end{mylemma}
+}
+
+% 5. Command: Lemma WITH Proof
+% Usage: \lemp{Title}{Label}{Lemma Content}{Proof Content}
+\NewDocumentCommand{\lemp}{m m +m +m}{
+    \begin{mylemma}{#1}{#2}
+        #3
+    \end{mylemma}
+    \begin{lempf}
+        #4
+    \end{lempf}
+}
 % --- Corollary Proof Environment (Dark Green accents) ---
 \newenvironment{corpf}{
     {\noindent\textbf{Proof.}}
@@ -218,10 +271,7 @@ Then $G$ has an element of order $p$.
 {
     Let $p$ be a prime number and let $G$ be a finite group. We call $G$ a \textit{p-Group} if $|G|=p^n$, where $n \ge 1.$
 }
-\defn{Group Actions}{}
-{
 
-}
 \thm{}{homo}
 {
     Let $\phi: G \to H$ be a homomorphism, and let $L$ be a subgroup of $H$. Then the subset $\phi^{-1}(L)={g \in G \mid \phi(g) \in L}$ is a subgroup of $G$.
@@ -231,6 +281,108 @@ Then $G$ has an element of order $p$.
     Let N be a normal subgroup of group $G$. Every subgroup of $G/N$ has the form $H/N$, where $H$ is a subgroup of $G.$
 }
 {}
+\section{Group Actions}
+\defn{Group Actions}{}
+{
+    Let $G$ be a group and $X$ be a non-empty set. A \textit{group action} of $G$ on $X$ is a map $G \times X \to X$, denoted by $(g,x) \mapsto g \cdot x$, satisfying:
+    \begin{itemize}
+        \item $e \cdot x = x$ for all $x \in X$, where $e$ is the identity of $G$.
+        \item $(gh) \cdot x = g \cdot (h \cdot x)$ for all $g,h \in G$ and $x \in X$.
+    \end{itemize}
+}
+
+\lemp{Orbits}{orbits}
+{
+    Let $G$ be a group that acts on a set $X.$ We say that $x,y \in X$ are \textbf{$G$-equivalent} if there is $g \in G$ such that $y=g\cdot x.$ $G$-equivalence is an equivalence relation and the classes are called \textbf{\textit{orbits}}. We denote it by $\mathcal{O}_x$ for the orbit containing $x$.
+}
+{
+    Let $\sim$ be the $G$-equivalence relation on a set $X$. We show that it is:
+    \begin{itemize}
+        \item {Reflexive:} For any $x \in X$, $x = e \cdot x$, so $x \sim x$.
+        \item {Symmetric:} If $x \sim y$, then $y = g \cdot x$. Multiplying both sides by $g^{-1}$ gives $x = g^{-1} \cdot y$, so $y \sim x$.
+        \item {Transitive:} If $x \sim y$ ($y = g \cdot x$) and $y \sim z$ ($z = h \cdot y$), then $z = h \cdot (g \cdot x) = (hg) \cdot x$. Since $hg \in G$, $x \sim z$.
+    \end{itemize}
+    
+    Thus, $\sim$ is an equivalence relation. Then, its equivalence classes are precisely the orbits $\mathcal{O}_x$. By Theorem \ref{thm:parts}, these classes partition the set $X$. Thus, the total size of $X$ is the sum of the sizes of these disjoint orbits.
+}
+\defn{Stabilizer}{stabilizer}
+{
+    Let a group $G$ act on a set $X$. The \textit{stabilizer} of an element $x \in X$ is the set of elements in $G$ that fix $x$:
+    \[ G_x = \{ g \in G \mid g \cdot x = x \}. \]
+}
+\lemp{}{stab_subgroup}
+{
+    Let $G$ be a group acting on a set $X$. For any element $x \in X$, the stabilizer $G_x = \{g \in G \mid g \cdot x = x\}$ is a subgroup of $G$.
+}
+{
+    We check the three conditions for a subgroup:
+    \begin{enumerate}
+        \item \textbf{Identity:} By the definition of a group action, $e \cdot x = x$ (where $e$ is the identity of $G$). Thus, $e \in G_x$, so the stabilizer is non-empty.
+        
+        \item \textbf{Closure under the operation:} Let $g, h \in G_x$. By definition, $g \cdot x = x$ and $h \cdot x = x$. We check the product $gh$:
+        \[ (gh) \cdot x = g \cdot (h \cdot x) = g \cdot (x) = x. \]
+        Thus, $gh \in G_x$.
+        
+        \item \textbf{Inverses:} Let $g \in G_x$, so $g \cdot x = x$. We consider the action of $g^{-1}$ on both sides:
+        \[ g^{-1} \cdot (g \cdot x) = g^{-1} \cdot x. \]
+        Using the compatibility property on the left side:
+        \[ (g^{-1}g) \cdot x = g^{-1} \cdot x \implies e \cdot x = g^{-1} \cdot x \implies x = g^{-1} \cdot x. \]
+        Thus, $g^{-1} \in G_x$.
+    \end{enumerate}
+    Therefore, $G_x$ is a subgroup of $G$.
+}
+\thmp{The Orbit-Stabilizer Theorem}{orbit_stabilizer}
+{
+    Let $G$ be a finite group acting on a finite set $X$. For any $x \in X$, the size of the orbit of $x$ is equal to the index of its stabilizer in $G$:
+    \[ |\mathcal{O}_x| = |G : G_x|. \]
+    Consequently, $|G| = |\mathcal{O}_x| \cdot |G_x|$.
+}
+{
+    Let $S$ be the set of left cosets of the stabilizer $G_x$ in $G$. We define a map $\psi: \mathcal{O}_x \to S$ by
+    \[ \psi(g \cdot x) = gG_x. \]
+    We must show that this map is well-defined and is a bijection.
+    First, we show that $\psi$ is well-defined, that is, it does not depend on the choice of a coset representative. Suppose $g \cdot x = h \cdot x$ for some $g, h \in G$. Observe that
+    \[ g \cdot x = h \cdot x \implies h^{-1} \cdot (g \cdot x) = x \implies (h^{-1}g) \cdot x = x. \]
+    Thus, $h^{-1}g \in G_x$, which implies $gG_x = hG_x$.
+    \\Next, we show that $\psi$ is injective. Suppose $\psi(g \cdot x) = \psi(h \cdot x)$. See that
+    \[ gG_x = hG_x \implies h^{-1}g \in G_x \implies (h^{-1}g) \cdot x = x. \]
+    Acting by $h$ on both sides gives $g \cdot x = h \cdot x$. Thus, the map is injective.
+    \\Finally, we show that $\psi$ is surjective. Let $gG_x$ be any left coset in $S$. By definition of the orbit, $y = g \cdot x$ is in $\mathcal{O}_x$, and $\psi(y) = gG_x$. Thus, the map is surjective.
+    Since $\psi$ is a bijection, the number of elements in the orbit $|\mathcal{O}_x|$ equals the number of left cosets $|S|$. By \hyperref[thm:Lagrange]{Lagrange's Theorem}, the number of cosets is the index $|G : G_x|$.
+    Therefore, we proved that $|\mathcal{O}_x| = |G : G_x|$.
+}
+\defn{Fixed Points}{}
+{
+   Let a group $G$ act on a set $X$. An element $x \in X$ is called a \textit{fixed point} if $g \cdot x = x$ for all $g \in G$, that is, $G_x = G$. The set of all fixed points is denoted by $\operatorname{Fix}(G)$.
+}
+\lemp{}{fixedpoint}
+{
+    Let $P$ be a finite $p$-group acting on a finite set $X$. Then, the number of fixed points $|\operatorname{Fix}(P)|$ is congruent to the total size of the set modulo $p$:
+    \[ |\operatorname{Fix}(P)| \equiv |X| \pmod p. \]
+}
+{
+    By Lemma \ref{lem:orbits}, the orbits of the action partition the set $X$. Thus, we can write the total size of $X$ as the sum of the sizes of these disjoint orbits:
+    \[ |X| = \sum |\mathcal{O}_x|. \]
+    By the \hyperref[thm:orbit_stabilizer]{Orbit-Stabilizer Theorem}, the size of any orbit $|\mathcal{O}_x|$ must divide the order of the group $|P|$. Since $P$ is a $p$-group, $|P| = p^n$, every orbit size must be a power of $p$.
+    We distinguish two cases for the orbits:
+    \begin{itemize}
+        \item \textbf{Case 1 ($|\mathcal{O}_x| = 1$):} An orbit has size 1 if and only if $g \cdot x = x$ for all $g \in P$. These are exactly the elements in $\operatorname{Fix}(P)$.
+        \item \textbf{Case 2 ($|\mathcal{O}_x| > 1$):} If an orbit has size greater than 1, it must be a multiple of $p$. Thus, $|\mathcal{O}_x| \equiv 0 \pmod p$.
+    \end{itemize}
+    Therefore, when we take the sum modulo $p$, all orbits of size greater than $1$ vanish, leaving only the sum of the fixed points:
+    \[ |X| = \sum_{x \in \operatorname{Fix}(P)} 1 + \sum_{|\mathcal{O}_x| > 1} |\mathcal{O}_x| \equiv |\operatorname{Fix}(P)| + 0 \pmod p. \]
+    \[ |X| \equiv |\operatorname{Fix}(P)| \pmod p.\]
+}
+\lemp{}{sylow_index}
+{
+    Let $P$ be a Sylow $p$-subgroup of a finite group $G$. Then the index of $P$ in $G$ is not divisible by $p$:
+    \[ p \nmid |G:P|. \]
+}
+{
+    Let $|G| = p^n m$ where $p \nmid m$. By definition of a Sylow $p$-subgroup, $|P| = p^n$. By Lagrange's Theorem:
+    \[ |G:P| = \frac{|G|}{|P|} = \frac{p^n m}{p^n} = m. \]
+    Since $p$ does not divide $m$, $p$ does not divide the index $|G:P|$.
+}
 \section{Conjugacy Classes}
 We start by providing the definition of the Conjugacy class, then show that it is a way to partition groups.
 \defn{Conjugacy class}{conj}
@@ -350,7 +502,7 @@ Then $G$ has an element of order $p$.
     Suppose we have a finite group $G$ such that $|G|$ is divisible by a prime $p.$ By \hyperref[thm:sylwfT]{Sylow's First Theorem}, we know that $G$ has a subgroup $H$ of order $p.$
     Since $|H|=p$ and $p$ is a prime number, then $H$ is cyclic and generated by a non-identity element. Let $h$ be a generator of $H;$ the order of $h$ is $p$. Thus, we found an element in $G$ of order $p.$ 
 }
-Before moving to the two more Sylow Theorems, we introduce a new term.
+Before moving to the two more Sylow Theorems, we introduce new terms.
 \defn{Conjugate subgroups}{}
 {
     Let $H,K$ be subgroup of a group $G.$ We say that $H$ and $K$ are conjugate in $G$ if there is an element $g\in G$ such that $H=gKg^{-1}.$ 
@@ -360,12 +512,57 @@ Before moving to the two more Sylow Theorems, we introduce a new term.
     Let $G$ be a finite group and let $H$ be a subgroup of $G.$ If $|H|$ is a power of a prime $p,$ then $H$ is contained in some Sylow p-Subgroup of $G.$
 }
 {
-
+    By \hyperref[thm:sylwfT]{Sylow's First Theorem}, Let $P$ be a Sylow $p$-subgroup of $G$. Let $X$ be the set of left cosets of $P$ in $G$, given by $X = \{gP \mid g \in G\}$.
+    We consider the action of $H$ on $X$ by left multiplication. By Lemma \ref{lem:fixedpoint}, the number of fixed points satisfies:
+    \[ |\operatorname{Fix}(H)| \equiv |X| \pmod p. \]
+    The size of the set is the index $|X| = |G:P|$. By Lemma \ref{lem:sylow_index}, we know that $p$ does not divide $|G:P|$. Therefore:
+    \[ |X| \not\equiv 0 \pmod p. \]
+    This implies that $|\operatorname{Fix}(H)| \not\equiv 0 \pmod p$, so the set of fixed points $\operatorname{Fix}(H)$ cannot be empty.
+    \\Thus, there exists at least one coset $gP \in X$ that is fixed by $H$. That is, for all $h \in H$:
+    \[ h \cdot (gP) = gP. \]
+    Multiplying by $g^{-1}$ on the left implies:
+    \[ g^{-1}hgP = P \implies g^{-1}hg \in P. \]
+    Since this holds for all $h \in H$, we conclude that $g^{-1}Hg \subseteq P$. Conjugating by $g$ yields:
+    \[ H \subseteq gPg^{-1}. \]
+    Since $P$ is a Sylow $p$-subgroup, its conjugate $gPg^{-1}$ has the same order as $P$ and is therefore also a Sylow $p$-subgroup. Therefore, we proved that $H$ is contained in the Sylow $p$-subgroup $gPg^{-1}$.
 }
 \thmp{Sylow's Third Theorem}{sylowtT}
 {
-    Let $p$ be a prime and let $G$ be a group of power $p^km$, where $p \nmid m.$ Then the number $n$ of \textit{Sylow p-Subgroups} of $G$ is equal to $1 \mod p$ and divides $m.$ Furthermroe, any two \textit{Sylow p-subgroups} of $G$ are conjugate.
+    Let $p$ be a prime and let $G$ be a group of order $p^km$, where $p \nmid m.$ Then the number $n$ of \textit{Sylow p-Subgroups} of $G$ is equal to $1 \mod p$ and divides $m.$
 }
-{}
+{
+    Let $S$ be the set of all Sylow $p$-subgroups of $G$, so $|S| = n$. By \hyperref[thm:sylowsT]{Sylow's Second Theorem}, any two Sylow $p$-subgroups are conjugate, which implies that $G$ acts transitively on $S$ by conjugation.
+    First, let $P \in S$. Since the action is transitive, the orbit of $P$ is the entire set $S$. By \hyperref[thm:orbit_stabilizer]{the Orbit-Stabilizer Theorem}:
+    \[ |S| = |G : N(P)|, \]
+    where $N(P)$ is the normalizer of $P$ in $G$.
+    Since $P \le N(P) \le G$, we can use the multiplicative property of indices:
+    \[ |G:P| = |G:N(P)| \cdot |N(P):P|. \]
+    We know that $|G:P| = m$, since $|G|=p^k m$ and $|P|=p^k$. We substitute $n = |G:N(P)|$
+    \[ m = n \cdot |N(P):P|. \]
+    Since $|N(P):P|$ is an integer, it follows that $n$ divides $m$.
+    Next, let the subgroup $P$ act on the set $S$ by conjugation. By Lemma \ref{lem:fixedpoint}:
+    \[ |S| \equiv |\operatorname{Fix}(P)| \pmod p. \]
+    Here, $\operatorname{Fix}(P)$ is the set of Sylow $p$-subgroups $Q$ that are normalized by $P$.
+    Clearly, $P$ normalizes itself, so $P \in \operatorname{Fix}(P)$.
+    Suppose there is another $Q \in \operatorname{Fix}(P)$. Then $P \le N(Q)$. Since $Q$ is normal in $N(Q)$ and $P$ is a Sylow $p$-subgroup of $N(Q)$, $P$ must be contained in a conjugate of $Q$ inside $N(Q)$. But since $Q$ is normal, its only conjugate is $Q$ itself. Thus $P \le Q$. Since $|P|=|Q|=p^k$, we must have $P=Q$.
+    Therefore, the only fixed point is $P$ itself, so $|\operatorname{Fix}(P)| = 1$.
+    Substituting this back into the congruence:
+    \[ n \equiv 1 \pmod p.\]
+}
+\corp{}{}
+{
+    A Sylow p-subgroup of a finite group $G$ is a normal subgroup of $G$ if
+and only if it is the only Sylow p-subgroup of $G$.
+}
+{
+        For the backward direction,
+    suppose $P$ is the unique Sylow $p$-subgroup of $G$. Let $g \in G$. The conjugate subgroup $gPg^{-1}$ has the same order as $P$ ($|gPg^{-1}| = |P|$). By the definition of a Sylow $p$-subgroup, $gPg^{-1}$ is also a Sylow $p$-subgroup.
+    Since $P$ is the \textit{only} Sylow $p$-subgroup, we must have $gPg^{-1} = P$. Since this holds for all $g \in G$, $P$ is normal in $G$.
+    \\For the forward direction,
+    suppose $P$ is a normal Sylow $p$-subgroup of $G$. Let $Q$ be any other Sylow $p$-subgroup of $G$.
+    By Sylow's Second Theorem, $P$ and $Q$ are conjugate, meaning there exists $g \in G$ such that $Q = gPg^{-1}$.
+    Because $P$ is normal, we know that $gPg^{-1} = P$ for all $g \in G$.
+    Therefore, $Q = P$. This implies that $P$ is the unique Sylow $p$-subgroup of $G$.
+}
 \section{Applications of Sylow Theorems}
 \end{document}
