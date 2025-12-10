@@ -1,0 +1,70 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\geometry{a4paper, margin=0.75in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 10\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{December 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{9}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section{Group Homomorphisms}
+\section*{Problem 8}
+\begin{proof}
+    Let $G$ be a group of permutations, let $H$ be the multiplicative group $\{1,-1\}$, and let $\alpha,\beta$ elements from the group. Observe that we have three cases:
+    \begin{itemize}
+        \item \textbf{When $\alpha,\beta$ are even permutations}. \\Then $\alpha\beta$ is even permutation, $\operatorname{sgn}(\alpha\beta)=1=\operatorname{sgn}(\alpha)\operatorname{sgn}(\beta)=1\cdot 1=1.$
+        \item \textbf{When $\alpha,\beta$ are odd permutations}.\\ Then $\alpha\beta$ is even permutation, $\operatorname{sgn}(\alpha\beta)=1=\operatorname{sgn}(\alpha)\operatorname{sgn}(\beta)=-1\cdot -1=1.$
+        \item \textbf{When $\alpha$ is even and $\beta$ is odd}.\\ Then $\alpha\beta$ is odd permutation, $\operatorname{sgn}(\alpha\beta)=-1=\operatorname{sgn}(\alpha)\operatorname{sgn}(\beta)=1\cdot -1=-1.$
+    \end{itemize} 
+    Hence, $\operatorname{sgn}$ is a homomorphism from $G$ to the multiplicative group $\{1,-1\}.$
+    Since the identity of $H$ is $1$, $\operatorname{ker}(\operatorname{sgn})=\text{the group of even permutations}$. We know by Theorem 10.2.2. in the Lecture Notes that the kernel is normal in $G.$ Let $G$ be the symmetric group $S_n$, then the kernel is clearly the alternating group $A_n$ and it is normal. 
+    By the First Isomorphism Theorem, $S_n/A_n \cong \operatorname{sgn(S_n)}.$ We know $|\operatorname{sgn}(S_n)|=2$, so the index of $A_n$ is $2$, so it partitions the group $S_n$ into two partitions, the first is $A_n$, and the second is clearly the remaining elements, which are the set of odd permutations. 
+    For the last part, suppose we have a subgroup $H$ from the permutation group, it cannot be the group of all odd permutations since the identity is an even permutation. We also know that it can be a group of only even permutations. Finally, suppose this group has both even and odd permutations, by our previous work in this problem, we showed that the index of the subgroup of even permutations from a group of odd and even permutations is $2$. Hence, clearly half of the subgroup $H$ are even permutations and the other half are odd permutations. 
+\end{proof}
+\section*{Problem 12}
+\begin{proof}
+    Let $\phi$ be a function $\phi: \mathbb{Z}_n \to \mathbb{Z}_k,$ such that $\phi(a)=a \pmod k$, where $n,k \in \mathbb{Z}$ and $a \in \mathbb{Z}_n.$ We pick $b \in \mathbb{Z}_n$ and show that $\phi$ is well-defined. Suppose $a \mod n = b \mod n$, so $a \equiv b \pmod n$ and $n \mid a-b$. Since $k \mid n$, we can see $k \mid a-b$ and $a \equiv b \pmod k$. Thus, any two integers with the same representative in $\mathbb{Z}_n$ will have the same representative in $Z_k$ and $\phi$ is well-defined.
+    Next, observe that
+    \[\phi(a+b)=(a+b) \mod k=(a \mod k)+(b \mod k)=\phi(a)+\phi(b).\]
+    Thus, $\phi$ is a homomorphism. Let $s \in \operatorname{ker}(\phi)$, so $\phi(s)=0$. By definition of $\phi$, $s \pmod k=0$, so there is an element $t \in \mathbb{Z}$ such that $s =tk$. The elements of the form $tk$ in $\mathbb{Z}_n$ form the cyclic group $\langle k \rangle$ that is clearly the kernel.
+    Since $k \mid n$, $k\le n$ and $Z_k \subseteq Z_n$ so $\phi$ is clearly serjective. By Corollary 10.3.4. in the Lecture Notes, $\mathbb{Z}_n/\langle k\rangle \cong Z_k.$ Therefore, the proof is satisfied.
+\end{proof}
+\section*{Problem 15}
+Since $\phi$ is a homomorphism, we know it preserves the group operation. So, since $\phi(10+23)=\phi(10)+\phi(23)=0+9=9$, but we know that $\phi(10+23)=\phi(3).$ similarly, $\phi(20+23)=\phi(13)=9$. So, the set of elements that maps to $9$ is $\{3,13,23.\}$
+\section*{Problem 16}
+\begin{proof}
+    Since $|\mathbb{Z}_8\oplus \mathbb{Z}_2|=|\mathbb{Z}_4 \oplus \mathbb{Z}_4|$, if a surjective homomorphism is found, this function is clearly an isomorphism. Thus, the two groups must have the same structure. We find a counter example, that is, observe the highest order of an element in $\mathbb{Z}_8 \oplus \mathbb{Z}_2$ is $\operatorname{Lcm}(8,2)=8$, while the highest order of an element in $\mathbb{Z}_4 \oplus \mathbb{Z}_4$ is $\operatorname{lcm}(4,4)=4$. Clearly, the two groups are different and no isomorphism can be found. Therefore, there is no homomorphism from $\mathbb{Z}_8\oplus \mathbb{Z}_2$ to $\mathbb{Z}_4\oplus \mathbb{Z}_4.$ 
+\end{proof}
+\section*{Problem 20}
+\begin{proof}
+    From Corollary 10.3.5. in the Lecture Notes, since the homomorphisms we are counting are surjective so $|\mathbb{Z}_8|$ must divide $|\mathbb{Z}_{20}|$. Observe that $\frac{|\mathbb{Z}_{20}|}{|\mathbb{Z}_8|}=\frac{20}{8}=2.5$, which is not an integer, so no surjective homomorphism can be found.
+    For the second part, suppose we found a homomorphism $\psi$. Since $\mathbb{Z}_{20}$ is cyclic, then by corollary 10.3.5. $|\psi(1)|$ divides $|\mathbb{Z}_{20}|$ and clearly it divides $|\mathbb{Z}_8|$. Thus, it divides the $\operatorname{gcd}(|\mathbb{Z}_{20}|,|\mathbb{Z}_8|)=4.$
+    Thus, since we know that the generator determines the homomorphism, so the order of $\psi(1)$ in $\mathbb{Z}_8$ must divide $4.$ In $\mathbb{Z}_8,$ those elements are $0,2,4,6$. Hence, we can find $4$ homomorphisms from $\mathbb{Z}_{20} \to \mathbb{Z}_8.$
+\end{proof}
+\section*{Problem 24}
+    Since $\operatorname{gcd}(50,7)=1$, then $7$ is a generator of $\mathbb{Z}_{50}$. Since the generator determines the homomorphism, then we observe that:
+    $\phi(7)=7\cdot \phi(1)\equiv 6 \pmod {15}.$ Then we multiply by the inverse of $7$ modulo $15$, that is, $\phi(1) \equiv 6\cdot 13= 78 =3\pmod {15}.$ Thus,
+    \begin{itemize}
+    \item $\phi(x)=x\phi(1)=3x \mod {15}$
+    \item The image of $\phi$ is the elements of the form $3x \mod {15}$, where $x \in \mathbb{Z}_{50}$. So they are the multiples of $3$ in $\mathbb{Z}_{15}.$
+    \item For an element $\phi(x)$ to be in the kernel, it has to satisfy that $3x \mod 15 =0$, so $3x$ has to be a multiple of $15$. Observe that when $x$ is a multiple of $5$, its image is the identity so $x \in \operatorname{ker}(\phi).$ The kernel is clearly the set of multiples of $5$ in $\mathbb{Z}_{50}.$
+    \item We know, from part (a), that $\phi(1)=3$. The set of elements that maps to $3$ is the coset $1+\operatorname{ker}(\phi)$, which is $\{1, 6, 11, 16, 21, 26, 31, 36, 41, 46\}.$
+    \end{itemize} 
+\end{document}
