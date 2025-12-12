@@ -1,0 +1,167 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx, setspace, array, xcolor, mathtools, contour, tikz, amsthm, setspace, amsmath,amsfonts,amssymb, subcaption, fancyhdr, lipsum,multicol, geometry, gensymb}
+\usepackage{colortbl}
+\newtheorem{theorem}{Theorem}
+\geometry{a4paper, margin=0.75in}
+\contourlength{0.5pt}
+\usetikzlibrary{patterns}
+\usepackage[english]{babel}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\title{Modern Algebra}
+\author{Assignment 12\\ \\ Yousef A. Abood\\ \\ ID: 900248250}
+\date{December 2025}
+\setlength{\parindent}{0pt}
+\singlespacing
+\parskip=1mm
+\setcounter{section}{10}
+\setcounter{subsection}{1}
+\onehalfspacing
+\begin{document}
+\maketitle
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
+\section*{Problem 2}
+
+%   The ring {0, 2, 4, 6, 8} under addition and multiplication modulo
+% 10 has a unity. Find it.
+We observe that 
+\begin{itemize}
+    \item $0*6=0;$
+    \item $2*6=2;$
+    \item $4*6=4;$
+    \item $6*6=6;$
+    \item $8*6=8.$
+\end{itemize}
+Thus, $6$ is the unity of this ring under addition and multiplication modulo $10.$
+\section*{Problem 3}
+Consider the ring of the real valued functions, we denote it by $R$, and let $S$ be the set of odd functions.
+Clearly, we can see that $S$ is closed under subtraction, that is, pick two functions $f_1, f_2 \in S$ and see that $f_1-f_2 \in S.$ Next, we show $S$ does not form a ring. Observe that $f_1\cdot f_2 \notin S$ because it is an even function, so it is not closed under multiplication. Hence, $S$ is not a ring. 
+\section*{Problem 5}
+\begin{center}
+    \textbf{Theorem: }\textit{If a ring has a unity, it is unique. If a ring element has a multiplicative inverse, it is unique.}
+\end{center}
+\begin{proof}
+    For the first part, suppose we have a ring $R$ with a unity. That is, we have an element $e \in R$ such that $e\cdot r=r$, where $r \in R.$ To prove that the unity is unique assume that we have another element $s \in R$ such that $s\cdot r=r.$ Observe that 
+    \begin{align*}
+        s \cdot e &=e \\
+        s \cdot e &=s
+    \end{align*} 
+    Thus, $s=e$ and the unity is unique.
+   \\ For the second part, suppose that we have an element $r^{-1} \in R$ such that $r \cdot r^{-1} =r^{-1}\cdot r= e$, where $e$ is the unity. Suppose we have another element $t$ such that $r \cdot t= t \cdot r=e.$ See that 
+\begin{align*}
+    t \cdot r &=e\\
+    t \cdot r \cdot r^{-1}&=e \cdot r^{-1}\\
+    t \cdot (r \cdot r^{-1})&=r^{-1}\\
+    t \cdot e &= r^{-1}\\
+    t &= r^{-1}.
+\end{align*}
+Hence, $t = r^{-1}$ and the multiplicative inverse is unique.
+
+\end{proof}
+\section*{Problem 6}
+We observe when $n=6$
+\begin{itemize}
+    \item See that $3^2=3.$
+    \item See that $2 \cdot 3 =0,$ $2,3 \ne 0.$
+    \item See that $2 \cdot 3 = 4 \cdot 3 =0,$ $3 \ne 0, 2 \ne 4.$
+\end{itemize}
+No, $n$ is not prime.
+\section*{Problem 12}
+% Let a, b, and c be elements of a commutative ring, and suppose that
+% a is a unit. Prove that b divides c if and only if ab divides c.
+\begin{proof}
+    Suppose we have a commutative ring $R$. Let $a,b,c$ be elements in $R$, where $a$ is a unit. That is, there is an element $a^{-1} \in R$ such that $a\cdot a^{-1}=1_R.$
+   \\ For the forward direction, suppose that $b \mid c$, then there is an element $t \in R$ such that $c =b\cdot t.$ See that 
+    \begin{align*}
+        c&=b \cdot t\\
+        c&=b \cdot a \cdot a^{-1} \cdot t\\
+        c&=(b \cdot a) \cdot (a^{-1}\cdot t)
+    \end{align*}
+    Since $(a^{-1}\cdot t)\in R$, $c$ is divisible by $a\cdot b.$
+    \\For the backward direction, suppose that $a\cdot b \mid c$, then there exists an element $s \in R$ such that $(a\cdot b) \cdot s=c.$ Observe
+    \begin{align*}
+        (a \cdot b)\cdot s&=c\\
+        a \cdot b \cdot s&=c\\
+        a \cdot s \cdot b&=c \\
+        (a \cdot s) \cdot b&=c\\
+    \end{align*}
+    Since $(a \cdot s) \in R$, then $b \mid c.$ 
+    Therefore, that satisfies the proof.
+\end{proof}
+\section*{Problem 39}
+% Suppose that R is a ring with unity 1 and a is an element of R such
+% that a2 5 1. Let S 5 {ara | r [ R}. Prove that S is a subring of R.
+% Does S contain 1?
+\begin{proof}
+    Suppose $R$ is a ring with unity $1$ and $a$ is an element in $R$ such that
+    $a^2=1.$ Consider $S=\{a\cdot r\cdot a \mid r \in R\}.$ We need to show that $S$ is a subring of $R.$
+    We begin by showing that $S$ is not empty, observe that $a(1)a=a^2=1$. Thus, $S$ is not empty. Next, we need to show that it is closed under subtraction, pick $r_2 \in R$ and observe that
+    \[
+        ara-ar_2a = a(ra-r_2a)=a(r-r_2)a
+    \]
+    We know that $r-r_2 \in R$, so $a(r-r_2)a \in S$ and $S$ is closed under subtraction.
+    Next, we show it is closed under multiplication. Observe that 
+    \[ ara \cdot ar_2a = ar(aa)r_2a=ar(a^2)r_2a=arr_2a.\]
+    Since $rr_2 \in R$, $arr_2a \in S$ and $S$ is closed under multiplication. Hence, $S$ is a subring in $R.$
+\end{proof}
+   For the second question, we showed that $S$ is not empty as it contains $1.$
+\section*{Problem 40}
+% Let M2(Z) be the ring of all 2x2 matrices over integers and let R = ...
+% Prove or disprove that R is a subring of M2(Z).
+We disprove this statement by showing that $R$ is not closed under multiplication.
+\\ Consider two matrices $A, B \in R.$ Let $a=1, b=0$ for matrix $A$, and $a=0, b=1$ for matrix $B.$
+\[
+    A = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 0 & 1 \\ 1 & 1 \end{bmatrix}
+\]
+Observe the product $A \cdot B$:
+\begin{align*}
+    A \cdot B &=C= \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 1 & 1 \end{bmatrix} \\
+    &= \begin{bmatrix} (1)(0) + (1)(1) & (1)(1) + (1)(1) \\ (1)(0) + (0)(1) & (1)(1) + (0)(1) \end{bmatrix} \\
+    &= \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}
+\end{align*}
+For a matrix to be in $R$, it must be of the form $\begin{bmatrix} a & a+b \\ a+b & b \end{bmatrix}$, which implies the matrix must be symmetric.
+In our product, $C_{12}$ is $2$ and $C_{21}$ is $0.$ Since $2 \neq 0$, the product $A \cdot B \notin R.$
+Thus, $R$ is not a subring of $M_2(\mathbb{Z}).$
+
+\section*{Problem 41}
+% Let M2(Z) be the ring of all 2x2 matrices over integers and let R = ...
+% Prove or disprove that R is a subring of M2(Z).
+We prove that $R = \left\{ \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix} \bigg| a, b \in \mathbb{Z} \right\}$ is a subring of $M_2(\mathbb{Z}).$
+\begin{proof}
+    First, we show that $R$ is non-empty. Let $a=0$ and $b=0$, then $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix} \in R.$
+    \\ Next, we check for closure under subtraction. Let $A, B \in R$ such that
+    \[
+        A = \begin{bmatrix} a_1 & a_1-b_1 \\ a_1-b_1 & b_1 \end{bmatrix}, \quad B = \begin{bmatrix} a_2 & a_2-b_2 \\ a_2-b_2 & b_2 \end{bmatrix}
+    \]
+    Observe that
+    \begin{align*}
+        A - B &= \begin{bmatrix} a_1 - a_2 & (a_1-b_1) - (a_2-b_2) \\ (a_1-b_1) - (a_2-b_2) & b_1 - b_2 \end{bmatrix} \\
+        &= \begin{bmatrix} (a_1 - a_2) & (a_1-a_2) - (b_1-b_2) \\ (a_1-a_2) - (b_1-b_2) & (b_1 - b_2) \end{bmatrix}
+    \end{align*}
+    Since integers are closed under subtraction, let $a' = a_1-a_2$ and $b' = b_1-b_2.$ The resulting matrix is in $R.$
+    \\ Finally, we check for closure under multiplication. Let $A = \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix}$ and $X = \begin{bmatrix} x & x-y \\ x-y & y \end{bmatrix}.$
+    \\ The product $P = A \cdot X$ is:
+    \[
+        P = \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix} \begin{bmatrix} x & x-y \\ x-y & y \end{bmatrix}
+    \]
+    We calculate the entries:
+    \begin{itemize}
+        \item $P_{11} = ax + (a-b)(x-y) = ax + ax - ay - bx + by = 2ax - ay - bx + by$
+        \item $P_{12} = a(x-y) + (a-b)y = ax - ay + ay - by = ax - by$
+        \item $P_{21} = (a-b)x + b(x-y) = ax - bx + bx - by = ax - by$
+        \item $P_{22} = (a-b)(x-y) + by = ax - ay - bx + by + by = ax - ay - bx + 2by$
+    \end{itemize}
+    See that $P_{12} = P_{21}.$ Furthermore, observe that
+    \[
+        P_{11} - P_{22} = (2ax - ay - bx + by) - (ax - ay - bx + 2by) = ax - by
+    \]
+    This matches $P_{12}.$ Thus, if we let $\alpha = P_{11}$ and $\beta = P_{22}$, then $P = \begin{bmatrix} \alpha & \alpha-\beta \\ \alpha-\beta & \beta \end{bmatrix}.$
+    Since $\mathbb{Z}$ is closed under addition and multiplication, $\alpha, \beta \in \mathbb{Z}$ and $P \in R.$
+    \\ Hence, $R$ is a subring of $M_2(\mathbb{Z}).$
+\end{proof}
+\end{document}
