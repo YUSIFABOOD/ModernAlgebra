@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.6) (preloaded format=pdflatex 2025.10.5)  12 DEC 2025 11:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.6) (preloaded format=pdflatex 2025.10.5)  12 DEC 2025 13:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -689,11 +689,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-Overfull \hbox (19.49301pt too wide) in paragraph at lines 145--149
-\OT1/cmr/m/n/12 Finally, we check for clo-sure un-der mul-ti-pli-ca-tion. Let $\OML/cmm/m/it/12 A \OT1/cmr/m/n/12 = []$ and $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 :$ 
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -702,33 +697,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5] (Assignment12.aux)
+[4] (Assignment12.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 18664 strings out of 468131
- 370425 string characters out of 5435509
- 864332 words of memory out of 5000000
- 46938 multiletter control sequences out of 15000+600000
- 635965 words of font info for 75 fonts, out of 8000000 for 9000
+ 18665 strings out of 468131
+ 370442 string characters out of 5435509
+ 856332 words of memory out of 5000000
+ 46939 multiletter control sequences out of 15000+600000
+ 636272 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,14n,87p,460b,374s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,87p,561b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/yusif/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/yusif/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Assignment12.pdf (5 pages, 138798 bytes).
+Output written on Assignment12.pdf (4 pages, 135175 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

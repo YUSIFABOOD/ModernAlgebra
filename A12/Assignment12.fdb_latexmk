@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765531565.98564 "/home/yusif/Uni/Fall 2025/ModernAlgebra/A12/Assignment12.tex" "Assignment12.pdf" "Assignment12" 1765531566.62843 0
+["pdflatex"] 1765538495.33785 "/home/yusif/Uni/Fall 2025/ModernAlgebra/A12/Assignment12.tex" "Assignment12.pdf" "Assignment12" 1765538495.89208 0
   "/home/yusif/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1759671773.08374 220889 b633cf45c7eed4eadae3f50154bdaacb ""
   "/home/yusif/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1750595393.52507 14064 96f807bf4f6cac049e83a06ddbf0d5ae ""
   "/home/yusif/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1759671832.19204 13282062 3af3a523a84544475bbbd7151a7a228d ""
@@ -161,9 +161,9 @@
   "/home/yusif/.miktex/texmfs/install/tex/latex/tools/calc.sty" 1750577617.80799 10374 2ffd4f27c7f90b8a300608069537743c ""
   "/home/yusif/.miktex/texmfs/install/tex/latex/tools/multicol.sty" 1750577617.80808 33259 db80f750a01491473161bd4d0f6986d2 ""
   "/home/yusif/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1750439125.45563 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "/home/yusif/Uni/Fall 2025/ModernAlgebra/A12/Assignment12.tex" 1765531565.35492 8515 fb3367b1d9667e97afd9ac8565b951cf ""
-  "Assignment12.aux" 1765531566.54692 150 10846c853350b90452ca30d2d3a31603 "pdflatex"
-  "Assignment12.tex" 1765531565.35492 8515 fb3367b1d9667e97afd9ac8565b951cf ""
+  "/home/yusif/Uni/Fall 2025/ModernAlgebra/A12/Assignment12.tex" 1765538494.74865 6796 15e7e4aa0729f2c90decfc5bf68dd006 ""
+  "Assignment12.aux" 1765538495.76265 244 16ded3d153e90e9170e37df55dacb539 "pdflatex"
+  "Assignment12.tex" 1765538494.74865 6796 15e7e4aa0729f2c90decfc5bf68dd006 ""
   (generated)
   "Assignment12.aux"
   "Assignment12.log"

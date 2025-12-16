@@ -19,13 +19,14 @@
 \setlength{\parindent}{0pt}
 \singlespacing
 \parskip=1mm
-\setcounter{section}{10}
+\setcounter{section}{11}
 \setcounter{subsection}{1}
 \onehalfspacing
 \begin{document}
 \maketitle
 \noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}
-\section*{Problem 2}
+\section{Rings}
+\subsection*{Problem 2}
 
 %   The ring {0, 2, 4, 6, 8} under addition and multiplication modulo
 % 10 has a unity. Find it.
@@ -38,10 +39,10 @@ We observe that
     \item $8*6=8.$
 \end{itemize}
 Thus, $6$ is the unity of this ring under addition and multiplication modulo $10.$
-\section*{Problem 3}
+\subsection*{Problem 3}
 Consider the ring of the real valued functions, we denote it by $R$, and let $S$ be the set of odd functions.
 Clearly, we can see that $S$ is closed under subtraction, that is, pick two functions $f_1, f_2 \in S$ and see that $f_1-f_2 \in S.$ Next, we show $S$ does not form a ring. Observe that $f_1\cdot f_2 \notin S$ because it is an even function, so it is not closed under multiplication. Hence, $S$ is not a ring. 
-\section*{Problem 5}
+\subsection*{Problem 5}
 \begin{center}
     \textbf{Theorem: }\textit{If a ring has a unity, it is unique. If a ring element has a multiplicative inverse, it is unique.}
 \end{center}
@@ -63,7 +64,7 @@ Clearly, we can see that $S$ is closed under subtraction, that is, pick two func
 Hence, $t = r^{-1}$ and the multiplicative inverse is unique.
 
 \end{proof}
-\section*{Problem 6}
+\subsection*{Problem 6}
 We observe when $n=6$
 \begin{itemize}
     \item See that $3^2=3.$
@@ -71,7 +72,7 @@ We observe when $n=6$
     \item See that $2 \cdot 3 = 4 \cdot 3 =0,$ $3 \ne 0, 2 \ne 4.$
 \end{itemize}
 No, $n$ is not prime.
-\section*{Problem 12}
+\subsection*{Problem 12}
 % Let a, b, and c be elements of a commutative ring, and suppose that
 % a is a unit. Prove that b divides c if and only if ab divides c.
 \begin{proof}
@@ -93,7 +94,7 @@ No, $n$ is not prime.
     Since $(a \cdot s) \in R$, then $b \mid c.$ 
     Therefore, that satisfies the proof.
 \end{proof}
-\section*{Problem 39}
+\subsection*{Problem 39}
 % Suppose that R is a ring with unity 1 and a is an element of R such
 % that a2 5 1. Let S 5 {ara | r [ R}. Prove that S is a subring of R.
 % Does S contain 1?
@@ -110,7 +111,7 @@ No, $n$ is not prime.
     Since $rr_2 \in R$, $arr_2a \in S$ and $S$ is closed under multiplication. Hence, $S$ is a subring in $R.$
 \end{proof}
    For the second question, we showed that $S$ is not empty as it contains $1.$
-\section*{Problem 40}
+\subsection*{Problem 40}
 % Let M2(Z) be the ring of all 2x2 matrices over integers and let R = ...
 % Prove or disprove that R is a subring of M2(Z).
 We disprove this statement by showing that $R$ is not closed under multiplication.
@@ -128,40 +129,7 @@ For a matrix to be in $R$, it must be of the form $\begin{bmatrix} a & a+b \\ a+
 In our product, $C_{12}$ is $2$ and $C_{21}$ is $0.$ Since $2 \neq 0$, the product $A \cdot B \notin R.$
 Thus, $R$ is not a subring of $M_2(\mathbb{Z}).$
 
-\section*{Problem 41}
-% Let M2(Z) be the ring of all 2x2 matrices over integers and let R = ...
-% Prove or disprove that R is a subring of M2(Z).
-We prove that $R = \left\{ \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix} \bigg| a, b \in \mathbb{Z} \right\}$ is a subring of $M_2(\mathbb{Z}).$
-\begin{proof}
-    First, we show that $R$ is non-empty. Let $a=0$ and $b=0$, then $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix} \in R.$
-    \\ Next, we check for closure under subtraction. Let $A, B \in R$ such that
-    \[
-        A = \begin{bmatrix} a_1 & a_1-b_1 \\ a_1-b_1 & b_1 \end{bmatrix}, \quad B = \begin{bmatrix} a_2 & a_2-b_2 \\ a_2-b_2 & b_2 \end{bmatrix}
-    \]
-    Observe that
-    \begin{align*}
-        A - B &= \begin{bmatrix} a_1 - a_2 & (a_1-b_1) - (a_2-b_2) \\ (a_1-b_1) - (a_2-b_2) & b_1 - b_2 \end{bmatrix} \\
-        &= \begin{bmatrix} (a_1 - a_2) & (a_1-a_2) - (b_1-b_2) \\ (a_1-a_2) - (b_1-b_2) & (b_1 - b_2) \end{bmatrix}
-    \end{align*}
-    Since integers are closed under subtraction, let $a' = a_1-a_2$ and $b' = b_1-b_2.$ The resulting matrix is in $R.$
-    \\ Finally, we check for closure under multiplication. Let $A = \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix}$ and $X = \begin{bmatrix} x & x-y \\ x-y & y \end{bmatrix}.$
-    \\ The product $P = A \cdot X$ is:
-    \[
-        P = \begin{bmatrix} a & a-b \\ a-b & b \end{bmatrix} \begin{bmatrix} x & x-y \\ x-y & y \end{bmatrix}
-    \]
-    We calculate the entries:
-    \begin{itemize}
-        \item $P_{11} = ax + (a-b)(x-y) = ax + ax - ay - bx + by = 2ax - ay - bx + by$
-        \item $P_{12} = a(x-y) + (a-b)y = ax - ay + ay - by = ax - by$
-        \item $P_{21} = (a-b)x + b(x-y) = ax - bx + bx - by = ax - by$
-        \item $P_{22} = (a-b)(x-y) + by = ax - ay - bx + by + by = ax - ay - bx + 2by$
-    \end{itemize}
-    See that $P_{12} = P_{21}.$ Furthermore, observe that
-    \[
-        P_{11} - P_{22} = (2ax - ay - bx + by) - (ax - ay - bx + 2by) = ax - by
-    \]
-    This matches $P_{12}.$ Thus, if we let $\alpha = P_{11}$ and $\beta = P_{22}$, then $P = \begin{bmatrix} \alpha & \alpha-\beta \\ \alpha-\beta & \beta \end{bmatrix}.$
-    Since $\mathbb{Z}$ is closed under addition and multiplication, $\alpha, \beta \in \mathbb{Z}$ and $P \in R.$
-    \\ Hence, $R$ is a subring of $M_2(\mathbb{Z}).$
-\end{proof}
+\subsection*{Problem 46}
+% 46. Show that 2Z < 3Z is not a subring of Z.
+We show that the set $2\mathbb{Z} \cup 3\mathbb{Z}$ is not a ring as it is not closed under addition. We know that any element in $2\mathbb{Z}, 3\mathbb{Z}$ is written as $2k, 3s$ respectively, where $k,s \in \mathbb{Z}.$ Observe when $k=s=5$, $2k+3s=25$ and $25 \notin 2\mathbb{Z} \wedge 25 \notin 3\mathbb{Z}$, so it is not in $2\mathbb{Z}\cup 3\mathbb{Z}$. Hence, $2\mathbb{Z}\cup 3\mathbb{Z}$ is not closed under addition. Thus, $2\mathbb{Z}\cup 3\mathbb{Z}$ is not a ring.
 \end{document}
